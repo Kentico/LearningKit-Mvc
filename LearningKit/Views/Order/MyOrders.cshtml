@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "List of past orders";
+}
+
+@using LearningKit.Models.Checkout
+@*DocSection:ListOrders*@
+@model IEnumerable<OrderViewModel>
+
+@if (Model.Any())
+{
+    <h3>Your orders:</h3>
+    @* Ensures basic formatting of the displayed information. *@
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        @* Iterates over all orders in the collection and displays their properties. *@
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>
+                    @order.OrderID
+                </td>
+                <td>
+                    @order.OrderDate
+                </td>
+                <td>
+                    @(order.OrderStatusDisplayName)
+                </td>
+                <td>
+                    @String.Format(order.CurrencyFormatString, order.OrderTotalPrice)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Reorder", "Order", FormMethod.Post))
+                    {
+                        @Html.Hidden("OrderId", order.OrderID)
+                        <input type="submit" value="Reorder" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+@*EndDocSection:ListOrders*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

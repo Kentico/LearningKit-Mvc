@@ -1,0 +1,12 @@
+﻿@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@model LearningKit.Models.InlineEditors.NumberEditor.NumberEditorModel
+
+@using (Html.Kentico().BeginInlineEditor("number-editor", Model.PropertyName))
+{
+    <div style="position: absolute; top: 0px; right: 0px;">
+        <button id="plus-btn" type="button">+</button>
+        <button id="minus-btn" type="button">-</button>
+    </div>
+}

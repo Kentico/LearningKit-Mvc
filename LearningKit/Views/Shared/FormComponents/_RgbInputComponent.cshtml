@@ -1,0 +1,55 @@
+﻿@*DocSection:RgbViewModel*@
+@model LearningKit.Models.FormBuilder.CustomFormComponents.RgbInputComponent
+
+@using Kentico.Forms.Web.Mvc
+@using LearningKit.FormBuilder
+
+@* Gets a collection of system HTML attributes necessary for the correct functionality of the component input fields *@
+@{
+    IDictionary<string, object> htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@{
+    @* Specifies additional HTML attributes for the input fields *@
+    if (htmlAttributes.ContainsKey("style"))
+    {
+        htmlAttributes["style"] += " width:50px;";
+    }
+    else
+    {
+        htmlAttributes["style"] = "width:50px;";
+    }
+
+    @* Sets the partial color inputs to read-only, ensuring users can only specify the color intensities via the color selector *@
+    htmlAttributes["readonly"] = "";
+}
+
+@* Renders basic text input fields to store the partial color intensity values *@
+@Html.Raw("#")
+
+@Html.TextBoxFor(m => m.RedComponent, htmlAttributes)
+
+@Html.TextBoxFor(m => m.GreenComponent, htmlAttributes)
+
+@Html.TextBoxFor(m => m.BlueComponent, htmlAttributes)
+
+@* Specifies additional attributes for the color selector *@
+@{    
+    htmlAttributes.Remove("readonly");
+
+    // The data attributes are used by the accompanying JavaScript logic to assign values to the input fields represented by
+    // the corresponding identifiers whenever a different color is selected using the selector
+    htmlAttributes["data-red-id"] =  Html.IdFor(m => Model.RedComponent);
+    htmlAttributes["data-green-id"] = Html.IdFor(m => Model.GreenComponent);
+    htmlAttributes["data-blue-id"] = Html.IdFor(m => Model.BlueComponent);
+
+    // The window.kentico.updatableFormHelper.updateForm(this.form) ensures any visibility conditions depending 
+    // on fields based on this component only evaluate after a color has been selected using the color selector
+    htmlAttributes["onchange"] = "parseColorSelector(this); window.kentico.updatableFormHelper.updateForm(this.form)";
+}
+
+@* Renders the color selector using a custom HtmlHelper extension method *@
+@Html.CustomInput("color", "colorSelector", Model.GetValue(), htmlAttributes)
+
+<span><em>(Color selector)</em></span>
+@*EndDocSection:RgbViewModel*@

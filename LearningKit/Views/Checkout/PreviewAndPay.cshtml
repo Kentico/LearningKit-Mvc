@@ -1,0 +1,68 @@
+﻿@model LearningKit.Models.Checkout.PreviewAndPayViewModel
+@using LearningKit.Models.Checkout
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Preview step";
+}
+
+@*DocSection:DeliveryDetailsView*@
+@* Displays the customer details. *@
+<div id="customerDetails">
+    <h2>Customer Details</h2>
+    <div>
+        @Html.LabelFor(m => m.DeliveryDetails.Customer.FirstName):
+        @Html.DisplayFor(m => m.DeliveryDetails.Customer.FirstName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.DeliveryDetails.Customer.LastName):
+        @Html.DisplayFor(m => m.DeliveryDetails.Customer.LastName)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.DeliveryDetails.Customer.Company):
+        @if (!(String.IsNullOrEmpty((string)Model.DeliveryDetails.Customer.Company))) {
+            Html.DisplayFor(m => m.DeliveryDetails.Customer.Company);
+        } else { Html.Raw("none"); }
+    </div>
+</div>
+
+@* Lists all products from the shopping cart. *@
+<div id="cartContent">
+    <h3>Ordered products</h3>
+    <ul>
+        @* Loops through all shopping cart items. *@
+        @foreach (ShoppingCartItemViewModel cartItem in Model.Cart.CartItems)
+        {
+            @* Displays the shopping cart item's properties. *@
+            <li>
+                @cartItem.CartItemUnits&times; @cartItem.SKUName ... @String.Format(Model.Cart.CurrencyFormatString, cartItem.TotalPrice)
+            </li>
+            }
+    </ul>
+</div>
+
+@* Displays additional order details. *@
+<div id="shoppingCartTotals">
+    <p>Selected shipping method: @Model.DeliveryDetails.ShippingOption.ShippingOptionDisplayName</p>
+    <p>Total tax: @String.Format(Model.Cart.CurrencyFormatString, Model.Cart.TotalTax)</p>
+    <p>Total shipping: @String.Format(Model.Cart.CurrencyFormatString, Model.Cart.TotalShipping)</p>
+    <p>Total (incl. tax): @String.Format(Model.Cart.CurrencyFormatString, Model.Cart.GrandTotal)</p>
+</div>
+
+@* Invokes a POST action finalizing order creation. *@
+@using (Html.BeginForm("PreviewAndPay", "Checkout", FormMethod.Post))
+{
+    <div id="paymentMethod">
+        @Html.LabelFor(m => m.PaymentMethod.PaymentMethodID):
+        @Html.DropDownListFor(m => m.PaymentMethod.PaymentMethodID, Model.PaymentMethod.PaymentMethods)
+    </div>
+
+    <input type="submit" value="Create an order" />
+}
+@*EndDocSection:DeliveryDetailsView*@
+
+<p>
+    @Html.ActionLink("> Back to the customer details step", "DeliveryDetails")<br />
+    @Html.ActionLink("> Back to the customer details step with pre-filling addresses", "DeliveryDetailsAddressSelector")<br />
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

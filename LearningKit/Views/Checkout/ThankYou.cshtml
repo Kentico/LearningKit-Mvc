@@ -1,0 +1,15 @@
+﻿@*DocSection:ThankYou*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Thank-you page";
+}
+
+<h2>Thank-you page</h2>
+
+<p>Order number: @ViewBag.OrderID</p>
+<p>Your order was succesfully created. Thank you for your patronage!</p>
+@*EndDocSection:ThankYou*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

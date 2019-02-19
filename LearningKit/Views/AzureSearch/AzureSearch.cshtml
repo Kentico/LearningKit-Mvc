@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Azure Search";
+}
+@*DocSection:AzureSearchView*@
+@model LearningKit.Models.Search.AzureSearch.AzureSearchViewModel
+
+<h2>Azure Search</h2>
+
+<div>
+    @* Renders the search interface *@
+    @using (Html.BeginForm("Search", "AzureSearch", FormMethod.Post))
+    {
+        <div>
+            @Html.TextBoxFor(m => m.SearchString, new { placeholder = "Search..." })
+            <button type="submit" id="search">Search</button>
+        </div>
+
+        <p><strong>Country</strong></p>
+
+        for (int i = 0; i < Model.FilterCountry.Count; i++)
+        {
+            @Html.HiddenFor(m => m.FilterCountry[i].Name)
+            @Html.HiddenFor(m => m.FilterCountry[i].Value)
+            @Html.EditorFor(m => m.FilterCountry[i].Selected)
+            @Html.LabelFor(m => m.FilterCountry[i].Selected, Model.FilterCountry[i].Name)
+        }
+
+        <p><strong>Farm</strong></p>
+
+        for (int i = 0; i < Model.FilterFarm.Count; i++)
+        {
+            @Html.HiddenFor(m => m.FilterFarm[i].Name)
+            @Html.HiddenFor(m => m.FilterFarm[i].Value)
+            @Html.EditorFor(m => m.FilterFarm[i].Selected)
+            @Html.LabelFor(m => m.FilterFarm[i].Selected, Model.FilterFarm[i].Name)
+        }
+    }
+</div>
+
+<h2><strong>Search Results</strong></h2>
+
+<div>
+    @* Renders the search results *@
+    @if (Model.SearchResults == null)
+    {
+        @Html.Raw($"No results found for {Model.SearchString}.")
+    }
+    else
+    {
+        for (int i = 0; i < Model.SearchResults.Count; i++)
+        {
+            if (Model.SearchResults[i].Highlights == null)
+            {
+                <h3>@Html.Raw(Model.SearchResults[i].DocumentTitle)</h3>
+                @Html.Raw(Model.SearchResults[i].DocumentShortDescription)
+            }
+            else
+            {
+                string highlightedFragments = String.Join(" || ", Model.SearchResults[i].Highlights.Values.Select(value => String.Join(" ", value)));
+                <h3>@Html.Raw(Model.SearchResults[i].DocumentTitle)</h3>
+                @Html.Raw(highlightedFragments)
+            }
+        }
+    }
+</div>
+@*EndDocSection:AzureSearchView*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

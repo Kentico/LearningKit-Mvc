@@ -1,0 +1,51 @@
+﻿@using LearningKit.Models.Search.SmartSearch
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Smart search";
+}
+
+<h2>Smart search</h2>
+
+<p>
+    <strong>Note</strong>: This search uses a locally stored index with the code name "MVCSite.Index". You need to create the index in the connected Kentico site in order to search.
+</p>
+
+@*DocSection:SearchForm*@
+@using (Html.BeginForm("SearchIndex", "Search", FormMethod.Get))
+{
+    <input type="text" name="searchtext" placeholder="Search..." maxlength="1000">
+    <input type="submit" value="Search">
+}
+@*EndDocSection:SearchForm*@
+
+@*DocSection:SearchResultItemList*@
+@model SearchResultModel
+
+@using CMS.Search;
+
+@if (!Model.Items.Any())
+{
+    if (!String.IsNullOrWhiteSpace(Model.Query))
+    {
+        <h3>No results found for "@Model.Query"</h3>
+    }
+}
+else
+{
+    <h3>Results for "@Model.Query"</h3>
+    foreach (SearchResultItem item in Model.Items)
+    {
+    <div>
+        <strong>@item.Title</strong>
+    </div>
+    <div>
+        @Html.Kentico().ResolveUrls(item.Content)
+    </div>
+    }
+}
+@*EndDocSection:SearchResultItemList*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

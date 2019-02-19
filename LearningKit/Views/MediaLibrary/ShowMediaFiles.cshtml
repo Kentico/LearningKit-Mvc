@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Media library file listing";
+}
+
+@using LearningKit.Models.MediaLibrary
+
+@*DocSection:ShowMediaFiles*@
+@model IEnumerable<MediaFileViewModel>
+
+@using Kentico.Content.Web.Mvc
+@using Kentico.Web.Mvc
+
+<h2>Media library file listing</h2>
+
+@foreach (MediaFileViewModel mediaFile in Model)
+{
+    @* Gets a permanent URL for the media file and limits the file's maximum side size to 400 px *@
+    string url = Url.Kentico().ImageUrl(mediaFile.PermanentUrl, SizeConstraint.MaxWidthOrHeight(400));
+
+    <img src="@url" alt="@mediaFile.FileTitle" />
+}
+@*EndDocSection:ShowMediaFiles*@
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

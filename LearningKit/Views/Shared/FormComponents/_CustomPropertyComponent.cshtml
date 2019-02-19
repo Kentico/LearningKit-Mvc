@@ -1,0 +1,16 @@
+﻿@*DocSection:PlaceholderTextView*@
+@using Kentico.Forms.Web.Mvc
+
+@model LearningKit.Models.FormBuilder.CustomFormComponents.CustomPropertyComponent
+
+@{
+    @* Gets a collection of system HTML attributes necessary for the correct functionality of the form component inputs *@
+    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+
+    @* Specifies additional HTML attributes for the form component *@
+    htmlAttributes["size"] = Model.Properties.CharacterSize;
+}
+
+@* Renders the input element for the 'Value' property of the form component *@
+@Html.TextBoxFor(m => m.Value, htmlAttributes)
+@*EndDocSection:PlaceholderTextView*@

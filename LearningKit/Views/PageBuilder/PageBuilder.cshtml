@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Page with the page builder";
+}
+
+@*DocSection:Using*@
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+@*EndDocSection:Using*@
+
+@Html.Kentico().PageBuilderStyles()
+
+<h2>Page builder</h2>
+
+<h3>Editable area</h3>
+@*DocSection:EditableArea*@
+<div>
+    @Html.Kentico().EditableArea("area1")
+</div>
+@*EndDocSection:EditableArea*@
+
+<h3>Editable area with selected default section</h3>
+@*DocSection:EditableAreaSection*@
+<div>
+    @Html.Kentico().EditableArea("areaWithSection", defaultSectionIdentifier: "LearningKit.Sections.Col5050")
+</div>
+@*EndDocSection:EditableAreaSection*@
+
+<h3>Limited editable area</h3>
+@*DocSection:LimitedEditableArea*@
+<div>
+    @{
+        string[] allowedWidgets = { Kentico.Forms.Web.Mvc.Widgets.KenticoFormWidgetController.WIDGET_IDENTIFIER,
+                                    "LearningKit.Widgets.NumberWidget",
+                                    "LearningKit.Widgets.SomeOtherWidget" };
+    }
+    @Html.Kentico().EditableArea("limitedArea", allowedWidgets: allowedWidgets)
+</div>
+@*EndDocSection:LimitedEditableArea*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>
+
+@*DocSection:RegisterScripts*@
+@Html.Kentico().PageBuilderScripts()
+@*EndDocSection:RegisterScripts*@

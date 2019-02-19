@@ -1,0 +1,27 @@
+﻿@*DocSection:View*@
+@using Kentico.Forms.Web.Mvc
+
+@* Gets a collection of system HTML attributes necessary for the correct functionality of the form component inputs *@
+@{
+    IDictionary<string, object> htmlAttributes = ViewData.GetEditorHtmlAttributes();
+}
+
+@model LearningKit.Models.FormBuilder.CustomFormComponents.CustomFormComponent
+
+@* Specifies additional HTML attributes of the form component. Checks for the existence of certain attributes in case 
+    the returned 'htmlAttributes' collection already contains them (e.g., when the component is rendered within
+    the administration interface, where Kentico provides CSS classes to maintain the admin UI look and feel) *@
+@{
+    if (htmlAttributes.ContainsKey("class"))
+    {
+        htmlAttributes["class"] += " myclass";
+    }
+    else
+    {
+        htmlAttributes["class"] = "myclass";
+    }
+}
+
+@* Renders the input element for the 'Value' property of the form component *@
+@Html.TextBoxFor(m => m.Value, htmlAttributes)
+@*EndDocSection:View*@

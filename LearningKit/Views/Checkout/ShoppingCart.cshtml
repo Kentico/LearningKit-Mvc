@@ -1,0 +1,90 @@
+﻿@model LearningKit.Models.Checkout.ShoppingCartViewModel
+@using LearningKit.Models.Checkout;
+@using LearningKit.Controllers;
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Shopping cart";
+}
+
+<h2>Shopping cart</h2>
+
+@*DocSection:CartContent*@
+@if (Model.IsEmpty)
+{
+    <span>Your shopping cart is empty.</span>
+}
+else
+{
+    <ul>
+        @* Loops through all shopping cart items. *@
+        @foreach (ShoppingCartItemViewModel cartItem in Model.CartItems)
+        {
+            @* Displays the shopping cart item's properties. *@
+            <li>
+                @cartItem.CartItemUnits&times; @cartItem.SKUName ... @String.Format(Model.CurrencyFormatString, cartItem.TotalPrice)
+                @* Allows the item to be removed. *@
+                @using (Html.BeginForm("RemoveItem", "Checkout", FormMethod.Post))
+                {
+                    @Html.Hidden("ItemId", cartItem.CartItemID)
+                    <input type="submit" value="Remove" />
+                }
+            </li>
+        }
+    </ul>
+    @* Allows all items to be removed. *@
+    @Html.ActionLink("Remove all products", nameof(CheckoutController.RemoveAllItems))
+}
+@*EndDocSection:CartContent*@
+
+@* Displays the remaining value of products that needs to be added to the shopping cart to qualify for free shipping. *@
+@if (Model.RemainingAmountForFreeShipping > 0)
+{
+    <p>Spend @String.Format(Model.CurrencyFormatString, Model.RemainingAmountForFreeShipping) more to receive free shipping.</p>
+}
+
+
+<h2>Coupon codes</h2>
+
+@*DocSection:CouponCode*@
+@* Renders a text box for entering coupon codes and a button invoking
+    an action that handles adding of new coupon codes. *@
+@using (Html.BeginForm("AddCouponCode", "Checkout", FormMethod.Post))
+{
+    <input type="text" name="CouponCode" />
+    <input type="submit" value="Apply" />
+    @Html.ValidationMessage("CouponCodeError")
+}
+@* Lists applied coupon codes with an option to remove them. *@
+<ul>
+    @* Loops through all applied coupon codes *@
+    @foreach (string couponCode in Model.CouponCodes)
+    {
+        <li>
+            @couponCode
+            @* Renders a button invoking the action that removes specified coupon codes. *@
+            @using (Html.BeginForm("RemoveCouponCode", nameof(CheckoutController), FormMethod.Post))
+            {
+                <input type="hidden" name="CouponCode" value="@couponCode" />
+                <input type="submit" value="Remove" />
+            }
+        </li>
+    }
+</ul>
+@*EndDocSection:CouponCode*@
+
+<h2>Total price: @String.Format(Model.CurrencyFormatString, Model.GrandTotal)</h2>
+
+<p>
+    @*DocSection:Button*@
+    @* Links to the next step of the checkout process. *@
+    @Html.ActionLink("Continue to the customer details step", "DeliveryDetails")
+    @*EndDocSection:Button*@
+    <br />
+    @Html.ActionLink("Continue to the customer details step (with auto-fill for shipping addresses)", "DeliveryDetailsAddressSelector")
+</p>
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

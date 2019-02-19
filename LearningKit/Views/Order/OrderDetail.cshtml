@@ -1,0 +1,52 @@
+﻿@model LearningKit.Models.Checkout.OrderViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Order detail";
+}
+
+<h2>Display an order detail</h2>
+
+<p>
+    If you enter an order's ID to the text box and click the button, the order information will be displayed.
+</p>
+
+@*DocSection:OrderDetailView*@
+@* Renders a form field for entering order IDs. *@
+@using (Html.BeginForm("OrderDetail", "Order"))
+{    
+    <input type="text" name="TextBoxValue" />
+    <input type="submit" name="DisplayOrder" value="Display order" />
+}
+
+
+@if (Model != null)
+{
+    <h2>Order details</h2>
+    @* Displays order details. *@
+    <ul>
+        <li>Order number: @Model.OrderID</li>
+        <li>Status ID: @Model.OrderStatusID</li>
+        <li>Is paid: @Model.OrderIsPaid</li>
+        @if (Model.OrderPaymentResult != null)
+        {
+            <li>Payment method name: @Model.OrderPaymentResult.PaymentMethodName</li>
+            <li>Was payment successful: @Model.OrderPaymentResult.PaymentIsCompleted</li>
+        }
+        <li>Total price: @String.Format(Model.CurrencyFormatString, Model.OrderTotalPrice)</li>
+    </ul>
+    @* If the order is not paid for, renders a button invoking the 'MarkOrderAsPaid' action that marks the order as paid. *@
+    if (!Model.OrderIsPaid)
+    {
+        using (Html.BeginForm("MarkOrderAsPaid", "Order"))
+        {
+            <input type="text" hidden="hidden" name="TextBoxValue" value="@Model.OrderID" />
+            <input type="submit" name="MarkOrderAsPaid" value="Mark order as paid" />
+        }
+    }
+}
+@*EndDocSection:OrderDetailView*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

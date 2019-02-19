@@ -1,0 +1,10 @@
+﻿@model LearningKit.Personalization.ConditionTypes.HasGivenConsentViewModel
+
+@using (Html.BeginForm("Validate", "HasGivenConsent"))
+{
+    @Html.LabelFor(model => model.ConsentCodeName)
+    <br />
+    @Html.EditorFor(model => model.ConsentCodeName)
+    <br />
+    @Html.ValidationMessage("ConsentCodeName")
+}

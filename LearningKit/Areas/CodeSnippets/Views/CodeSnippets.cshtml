@@ -1,0 +1,76 @@
+﻿@* This is a dummy view file with code snippets used in the Kentico documentation. *@
+@* These code snippets do NOT take any part in the runnable LearningKit project. *@
+
+@using Kentico.Web.Mvc
+
+@{
+    string productImagePath = "";
+    int width = 0;
+    int height = 0;
+    var model = new
+    {
+        SKUID = 1,
+        SKUName = "Name"
+    };
+}
+
+@* E-commerce *@
+@*DocSection:ImageUrl*@
+@Url.Kentico().ImageUrl(productImagePath, SizeConstraint.Size(width, height))
+@*EndDocSection:ImageUrl*@
+
+@*DocSection:ImageUrlExample*@
+<img src="@Url.Kentico().ImageUrl("~/image.jpg", SizeConstraint.Size(300, 300))" alt="Product image" />
+@*EndDocSection:ImageUrlExample*@
+
+@*DocSection:ItemDetailActionLink*@
+@Html.ActionLink(model.SKUName, "ItemDetail", new { skuId = model.SKUID })
+@*EndDocSection:ItemDetailActionLink*@
+
+@*DocSection:ItemDetailUrlLink*@
+<a href="@Url.Action("ItemDetail", new { skuId = model.SKUID })">link text</a>
+@*EndDocSection:ItemDetailUrlLink*@
+
+@*DocSection:VariantDisplayImg*@
+<img id="js-product-image" ... />
+@*EndDocSection:VariantDisplayImg*@
+
+@* Content personalization *@
+@*DocSection:ContactGroupPersonalization*@
+@using CMS.ContactManagement
+
+@{
+    // Gets the current contact
+    ContactInfo currentContact = ContactManagementContext.GetCurrentContact();
+}
+
+@if (currentContact != null)
+{
+    // Displays personalized content for contacts belonging to the "YoungCustomers" contact group
+    if (currentContact.IsInContactGroup("YoungCustomers"))
+    {
+        <text>Hiya @currentContact.ContactFirstName</text>
+    }
+    else
+    {
+        <text>Hello</text>
+    }
+}
+@*EndDocSection:ContactGroupPersonalization*@
+
+@* Media library files *@
+@using Kentico.Content.Web.Mvc
+
+@{
+    var mediaFile = new
+    {
+        PermanentUrl = ""
+    };
+}
+
+@*DocSection:MediaFileUrl*@
+@{
+    // Generates a URL for the media file that forces download
+    Url.Kentico().FileUrl(mediaFile.PermanentUrl, new FileUrlOptions() { AttachmentContentDisposition = true });
+}
+@*EndDocSection:MediaFileUrl*@
