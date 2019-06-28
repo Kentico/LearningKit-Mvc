@@ -22,4 +22,4 @@ You can find older versions of the LearningKit project under the [Releases secti
 
 Quick links:
 
-- [Kentico 12 (without the Service Pack)]()
+- [Kentico 12 (without the Service Pack)](https://github.com/KenticoInternal/LearningKit-Mvc/tree/453a6dcae3f4e512d5a2a2450ba7f0ccaad77305)
