@@ -1,0 +1,27 @@
+﻿@using Kentico.Activities.Web.Mvc
+@using Kentico.OnlineMarketing.Web.Mvc
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>@ViewBag.Title - Learning Kit</title>
+    @Html.Kentico().PageBuilderStyles()
+    @* Registers scripts that ensure logging of analytics data for A/B tests *@
+    @Html.Kentico().ABTestLoggerScript()
+</head>
+<body>
+    @RenderBody()
+    @Html.Kentico().PageBuilderScripts()
+    
+    @* Registers scripts that ensure logging of campaign page visits and page-related activities *@
+    @Html.Kentico().ActivityLoggingScript()
+</body>
+</html>

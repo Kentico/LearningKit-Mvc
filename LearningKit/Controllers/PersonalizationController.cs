@@ -1,5 +1,9 @@
 ﻿using System.Web.Mvc;
+
 using CMS.ContactManagement;
+
+using LearningKit.Models.Personalization;
+
 
 namespace LearningKit.Controllers
 {
@@ -13,14 +17,26 @@ namespace LearningKit.Controllers
 
         /// <summary>
         /// Displays a page with a personalized greeting.
-        /// The content depends on whether the current contact belongs to the "YoungCustomers" contact group.
-        /// Caches the action's output for 10 minutes, with different cache versions defined by the "contactdata" custom string.
-        /// The "contactdata" string ensures separate caching for each combination of the following contact variables: contact groups, persona, gender
+        /// The content depends on whether the current contact belongs to the "YoungCustomers" persona.
+        /// Caches the output for 10 minutes, with different cache versions defined by the "OnlineMarketing" custom string.
+        /// The "OnlineMarketing" configuration separately caches each combination of persona and AB test variant variables.
         /// </summary>
-        [OutputCache(Duration = 600, VaryByCustom = "contactdata")]
+        [OutputCache(Duration = 600, VaryByCustom = "OnlineMarketing")]
         public ActionResult PersonalizedGreeting()
         {
-            return View(CurrentContact);
+            CurrentContactViewModel model;
+
+            // If on-line marketing is disabled, CurrentContact is null
+            if (CurrentContact != null)
+            {
+                model = new CurrentContactViewModel(CurrentContact);
+            }
+            else
+            {
+                model = null;
+            }
+
+            return View(model);
         }
     }
 }

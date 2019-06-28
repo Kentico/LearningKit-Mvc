@@ -1,7 +1,7 @@
 ﻿using Kentico.Forms.Web.Mvc;
 
 
-namespace LearningKit.Models.FormComponents.FormComponentProperties
+namespace LearningKit.FormBuilder.FormComponentProperties
 {
     public class CustomDropDownComponentProperties : SelectorProperties
     {

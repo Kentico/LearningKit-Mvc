@@ -3,7 +3,7 @@
 using Kentico.Forms.Web.Mvc;
 
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponentProperties
 {
     //DocSection:PropertiesDefinition
     public class RgbInputComponentProperties : FormComponentProperties<string>

@@ -1,9 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-using CMS;
-
-[assembly: AssemblyDiscoverable]
 [assembly: AssemblyTitle("LearningKit")]
 [assembly: AssemblyDescription("ASP.NET MVC 5 application for learning and documentation purposes. Contains code displayed as examples within the Kentico MVC documentation. The project does not represent a real-world website (unlike the MVC Dancing Goat sample site), but provides more basic examples suitable for learning purposes.")]
 [assembly: AssemblyConfiguration("")]

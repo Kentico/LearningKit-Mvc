@@ -2,8 +2,7 @@
 
 using Kentico.Forms.Web.Mvc;
 
-
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponentProperties
 {
     //DocSection:PlaceholderTextProp
     public class CharacterSizeProperties : FormComponentProperties<string>

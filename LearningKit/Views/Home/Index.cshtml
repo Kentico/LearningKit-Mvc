@@ -26,7 +26,7 @@
                     {
                         @Html.AntiForgeryToken()
                         <input type="submit" value="Sign out" />
-                    }                    
+                    }
                 </li>
             </ul>
         }
@@ -36,20 +36,14 @@
     <li>
         @Html.ActionLink("Register with consent", "Register", "RegisterWithConsent") <br />
         <strong>Note</strong>: An error will occur on the 'Register with consent' page if a consent with code name "SampleRegistrationConsent" does not exist in the connected Kentico database.
-    </li>
+    </li>    
 </ul>
-<h2>Content management</h2>
-<ul>
-    <li>
-        @Html.ActionLink("Media library files listing", "ShowMediaFiles", "MediaLibrary") <br />
-        <strong>Note</strong>: The media library files listing displays files from the "SampleMediaLibrary". An error will occur if the media library does not exist in the connected Kentico database.
-    </li>
-</ul>
+
 <h2>Widgets</h2>
 <ul>
     <li>
         @Html.ActionLink("Sample page builder", "Index", "PageBuilder") <br />
-        <strong>Note</strong>: To be able to use the page builder in the Kentico Pages application, you need to do the following in your connected Kentico instance:
+        <strong>Note</strong>: To be able to use the page builder in the Pages application, you need to do the following in your connected Kentico instance:
         <ol>
             <li>
                 Create a content-only page type.
@@ -58,16 +52,44 @@
                 On the page type's <em>General</em> tab, set the <em>URL pattern</em> to <span style="font-family: monospace;">/PageBuilder</span> and enable <em>Use Page tab</em>.
             </li>
             <li>
-                Create a page in the <em>Pages</em> application using the page type created in the first step. The alias path of the page must be: <span style="font-family: monospace;">/Home</span>
+                Create a page in the <em>Pages</em> application using the page type from the first step. The alias path of the page must be: <span style="font-family: monospace;">/Home</span>
             </li>
         </ol>
     </li>
 </ul>
+
+<h2>Page templates</h2>
+<ul>
+    <li>
+        @Html.ActionLink("Template-based page", "Index", "LandingPage") <br />
+        <strong>Note</strong>: To create a page based on a template in the Pages application, you need to do the following in your connected Kentico instance:
+        <ol>
+            <li>
+                Create a content-only page type, with the "LearningKit.LandingPage" code name (Namespace: LearningKit, Name: LandingPage).
+            </li>
+            <li>
+                On the page type's <em>General</em> tab, set the <em>URL pattern</em> to <span style="font-family: monospace;">/LandingPage</span> and enable <em>Use Page tab</em>.
+            </li>
+            <li>
+                Create a page in the <em>Pages</em> application using the page type from the first step, and select a page template. The alias path of the page must be: <span style="font-family: monospace;">/LandingPage</span>
+            </li>
+        </ol>
+    </li>
+</ul>
+
 <h2>Forms</h2>
 <ol>
     <li>Compose a form in the <strong>Forms</strong> application of the connected Kentico instance.</li>
     <li>Add the form onto a page using the page builder functionality and the <strong>Form</strong> widget. You can use the 'Sample page builder' page described in the Widgets section above.</li>
 </ol>
+
+<h2>Media library</h2>
+<ul>
+    <li>
+        @Html.ActionLink("Media library files listing", "ShowMediaFiles", "MediaLibrary") <br />
+        <strong>Note</strong>: The media library files listing displays files from the "SampleMediaLibrary". An error will occur if the media library does not exist in the connected Kentico database.
+    </li>
+</ul>
 
 <h2>E-commerce</h2>
 <ul>

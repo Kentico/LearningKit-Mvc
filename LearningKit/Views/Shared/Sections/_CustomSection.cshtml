@@ -1,0 +1,11 @@
+﻿@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@using LearningKit.Models.Sections.CustomSection
+
+@model ComponentViewModel<CustomSectionProperties>
+
+@* Shows a sample section with a background color specified in the section's configuration dialog *@
+<div style="background-color: @Model.Properties.Color;">
+    @Html.Kentico().WidgetZone()
+</div>

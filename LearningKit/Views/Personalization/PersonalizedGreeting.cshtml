@@ -1,6 +1,4 @@
-﻿@using CMS.ContactManagement
-
-@model ContactInfo
+﻿@model LearningKit.Models.Personalization.CurrentContactViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,19 +9,19 @@
 @{
     if (Model != null)
     {
-        // Displays a personalized greeting for contacts belonging to the "YoungCustomers" contact group
-        if (Model.IsInContactGroup("YoungCustomers"))
+        // Displays a personalized greeting for contacts belonging to the "YoungCustomers" persona
+        if (String.Equals(Model.ContactPersonaName, "YoungCustomers", StringComparison.OrdinalIgnoreCase))
         {
             <p>
                 <strong>Hiya</strong>
-                (a personalized greeting for contacts who belong to the "YoungCustomers" contact group)                    
+                (a personalized greeting for contacts who belong to the "YoungCustomers" persona)                    
             </p>
         }
         else
         {
             <p>
                 <strong>Hello</strong>
-                (a generic greeting for contacts who do not belong to the "YoungCustomers" contact group)
+                (a generic greeting for contacts who do not belong to the "YoungCustomers" persona)
             </p>
         }
     }

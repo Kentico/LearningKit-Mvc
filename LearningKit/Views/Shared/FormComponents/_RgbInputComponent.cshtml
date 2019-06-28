@@ -1,8 +1,9 @@
 ﻿@*DocSection:RgbViewModel*@
-@model LearningKit.Models.FormBuilder.CustomFormComponents.RgbInputComponent
-
 @using Kentico.Forms.Web.Mvc
 @using LearningKit.FormBuilder
+
+
+@model LearningKit.FormBuilder.FormComponents.RgbInputComponent
 
 @* Gets a collection of system HTML attributes necessary for the correct functionality of the component input fields *@
 @{
@@ -34,16 +35,16 @@
 @Html.TextBoxFor(m => m.BlueComponent, htmlAttributes)
 
 @* Specifies additional attributes for the color selector *@
-@{    
+@{
     htmlAttributes.Remove("readonly");
 
     // The data attributes are used by the accompanying JavaScript logic to assign values to the input fields represented by
     // the corresponding identifiers whenever a different color is selected using the selector
-    htmlAttributes["data-red-id"] =  Html.IdFor(m => Model.RedComponent);
+    htmlAttributes["data-red-id"] = Html.IdFor(m => Model.RedComponent);
     htmlAttributes["data-green-id"] = Html.IdFor(m => Model.GreenComponent);
     htmlAttributes["data-blue-id"] = Html.IdFor(m => Model.BlueComponent);
 
-    // The window.kentico.updatableFormHelper.updateForm(this.form) ensures any visibility conditions depending 
+    // The window.kentico.updatableFormHelper.updateForm(this.form) ensures any visibility conditions depending
     // on fields based on this component only evaluate after a color has been selected using the color selector
     htmlAttributes["onchange"] = "parseColorSelector(this); window.kentico.updatableFormHelper.updateForm(this.form)";
 }

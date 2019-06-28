@@ -1,0 +1,21 @@
+﻿@using Kentico.Forms.Web.Mvc
+
+@model LearningKit.FormBuilder.FormComponents.ColorFormComponent
+
+@{
+    // Gets a collection of system HTML attributes necessary for the functionality of form component inputs
+    IDictionary<string, object> htmlAttributes = ViewData.GetEditorHtmlAttributes();
+
+    // Prepares data that will be passed to the function that opens the modal dialog
+    string dialogData = Newtonsoft.Json.JsonConvert.SerializeObject(new
+    {
+        modalDialogUrl = Url.Action("Index", "ColorModalDialog"),
+        colorInputId = Html.IdFor(m => m.Value).ToHtmlString()
+    });
+}
+
+@* Textbox input element that displays/edits the form component's color value *@
+@Html.TextBoxFor(m => m.Value, htmlAttributes)
+
+@* Button that opens the modal dialog when clicked *@
+<button type="button" class="ktc-btn ktc-btn-default" onclick="openColorModalDialog(@dialogData)">Open dialog</button>

@@ -2,18 +2,21 @@
 
 using Kentico.Forms.Web.Mvc;
 
-using LearningKit.Models.FormBuilder.CustomFormComponents;
-
+using LearningKit.FormBuilder.FormComponents;
+using LearningKit.FormBuilder.FormComponentProperties;
 
 //DocSection:ComponentRegistration
-[assembly: RegisterFormComponent("RgbInputComponent", typeof(RgbInputComponent), "RGB color input", Description = "Allows users to specify a color in the RGB hexadecimal format either manually, or by using a color selector", IconClass = "icon-palette")]
+[assembly: RegisterFormComponent(RgbInputComponent.IDENTIFIER, typeof(RgbInputComponent), "RGB color input", Description = "Allows users to specify a color in the RGB hexadecimal format either manually, or by using a color selector", IconClass = "icon-palette")]
 //EndDocSection:ComponentRegistration
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponents
 {
     //DocSection:RgbInputComponentImplementation
     public class RgbInputComponent : FormComponent<RgbInputComponentProperties, string>
     {
+        public const string IDENTIFIER = "RgbInputComponent";
+
+
         // Specifies that the property carries data for binding by the form builder
         [BindableProperty]
         // Used to store the value of the input field of the component

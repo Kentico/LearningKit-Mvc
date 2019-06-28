@@ -4,17 +4,17 @@
 @using LearningKit.Models.InlineEditors.NumberEditor
 @using LearningKit.Models.Widgets.NumberWidget
 
-@model NumberWidgetViewModel
+@model ComponentViewModel<NumberWidgetProperties>
 
-<h3 style="background-color: #dddddd;">The number you chose for today is @Model.Number.</h3>
+<h3 style="background-color: #dddddd;">The number you chose for today is: @Model.Properties.Number</h3>
 
 @* Shows an inline editor when rendered in the edit mode of the Pages application in Kentico *@
 @if (Context.Kentico().PageBuilder().EditMode)
 {
     Html.RenderPartial("InlineEditors/_NumberEditor", new NumberEditorModel
     {
-        @* Use the nameof() operator to get the name of the widget property from the widget properties model *@
+        @* Use the nameof() operator to get the name of the edited property from the widget property model *@
         PropertyName = nameof(NumberWidgetProperties.Number),
-        Number = Model.Number
+        Number = Model.Properties.Number
     });
 }

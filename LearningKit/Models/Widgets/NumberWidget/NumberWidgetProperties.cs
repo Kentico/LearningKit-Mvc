@@ -3,7 +3,7 @@ using Kentico.PageBuilder.Web.Mvc;
 
 namespace LearningKit.Models.Widgets.NumberWidget
 {
-    public sealed class NumberWidgetProperties : IWidgetProperties
+    public class NumberWidgetProperties : IWidgetProperties
     {
         // Defines a property and sets its default value
         // Assigns the default Kentico text input component, which allows users to enter 

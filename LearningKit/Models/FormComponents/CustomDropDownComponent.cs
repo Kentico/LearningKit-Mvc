@@ -6,13 +6,13 @@ using CMS.DocumentEngine;
 
 using Kentico.Forms.Web.Mvc;
 
-using LearningKit.Models.FormComponents;
-using LearningKit.Models.FormComponents.FormComponentProperties;
+using LearningKit.FormBuilder.FormComponents;
+using LearningKit.FormBuilder.FormComponentProperties;
 
 
 [assembly: RegisterFormComponent(CustomDropDownComponent.IDENTIFIER, typeof(CustomDropDownComponent), "Drop-down with custom data", IconClass = "icon-menu")]
 
-namespace LearningKit.Models.FormComponents
+namespace LearningKit.FormBuilder.FormComponents
 {
     public class CustomDropDownComponent : SelectorFormComponent<CustomDropDownComponentProperties>
     {

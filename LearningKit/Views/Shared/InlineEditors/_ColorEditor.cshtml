@@ -1,0 +1,13 @@
+﻿@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@model LearningKit.Models.InlineEditors.ColorEditor.ColorEditorModel
+
+@using (Html.Kentico().BeginInlineEditor("color-editor",
+                                         Model.PropertyName,
+                                         new { data_url = Url.Action("Index", "ColorModalDialog") }))
+{
+    <div style="position: absolute; top: 0px; right: 20px;">
+        <button id="modal-btn" type="button">Change color</button>
+    </div>
+}

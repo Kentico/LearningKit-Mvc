@@ -2,9 +2,8 @@
 
 using Kentico.Forms.Web.Mvc;
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponentProperties
 {
-
     public class CustomFormComponentProperties : FormComponentProperties<string>
     {
         //DocSection:PropertiesDefinition

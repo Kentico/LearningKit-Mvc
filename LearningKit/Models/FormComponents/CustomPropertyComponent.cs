@@ -5,15 +5,19 @@
 
 using Kentico.Forms.Web.Mvc;
 
-using LearningKit.Models.FormBuilder.CustomFormComponents;
+using LearningKit.FormBuilder.FormComponents;
+using LearningKit.FormBuilder.FormComponentProperties;
 
 
-[assembly: RegisterFormComponent("CustomPropertyComponent", typeof(CustomPropertyComponent), "Custom text input", Description = "Custom single-line text input", IconClass = "icon-l-text")]
+[assembly: RegisterFormComponent(CustomPropertyComponent.IDENTIFIER, typeof(CustomPropertyComponent), "Custom text input", Description = "Custom single-line text input", IconClass = "icon-l-text")]
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponents
 {
     public class CustomPropertyComponent : FormComponent<CharacterSizeProperties, string>
     {
+        public const string IDENTIFIER = "CustomPropertyComponent";
+
+
         [BindableProperty]
         public string Value { get; set; }
 

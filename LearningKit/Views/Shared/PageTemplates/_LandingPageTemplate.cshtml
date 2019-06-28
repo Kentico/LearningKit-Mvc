@@ -1,0 +1,35 @@
+﻿@*DocSection:LandingPageTemplateView*@
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@using LearningKit.Models.PageTemplates.LandingPage
+
+@model ComponentViewModel<LandingPageProperties>
+
+@{
+    Layout = "~/Views/Shared/_PageTemplateLayout.cshtml";
+}
+
+@{
+    // Sets the page title to the name of the current page
+    ViewBag.Title = Model.Page.DocumentName;
+}
+
+@if (Model.Properties.ShowTitle)
+{
+    <h1>@Model.Page.DocumentName</h1>
+}
+
+<div>
+    <div>
+        @Html.Kentico().EditableArea("top")
+    </div>
+    <div style="background-color: #eeeeee">
+        @Html.Kentico().EditableArea("bottom")
+    </div>
+</div>
+@*EndDocSection:LandingPageTemplateView*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

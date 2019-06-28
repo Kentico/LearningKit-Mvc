@@ -1,0 +1,29 @@
+﻿@using Kentico.Components.Web.Mvc.Dialogs
+
+@model LearningKit.Models.ModalDialogs.ColorModalDialogViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Kentico().ModalDialogScript()
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <form action="">
+        @foreach (var color in Model.Colors)
+        {
+            <input type="radio" id="@color" name="color" value="@color" />
+            <label for="@color">@color</label><br />
+        }
+    </form>
+
+    @* Script that preselects the radio button of the current color
+       Gets the value from the data passed when the 'kentico.modalDialog.open' function is called *@
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var defaultValue = kentico.modalDialog.getData().value;
+            document.getElementById(defaultValue).checked = true;
+        });
+    </script>
+</body>
+</html>

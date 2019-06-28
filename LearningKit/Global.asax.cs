@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-using CMS.ContactManagement;
-
-using Kentico.Forms.Web.Mvc;
 using Kentico.Web.Mvc;
+using Kentico.OnlineMarketing.Web.Mvc;
 
 namespace LearningKit
 {
@@ -23,24 +19,7 @@ namespace LearningKit
 
             // Mapping of routes must be done after registration of Kentico MVC features (using the ApplicationBuilder instance)
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
-            // Sets the rendering configuration for the 'Form' page builder widget
-            SetWidgetFormFieldRenderingConfuration();
         }
-
-
-        //DocSection:WidgetConfiguration
-        // Configures the rendering configuration for the 'Form' page builder widget
-        private void SetWidgetFormFieldRenderingConfuration()
-        {
-            FormFieldRenderingConfiguration.Widget.ColonAfterLabel = false;
-            FormFieldRenderingConfiguration.Widget.ComponentWrapperConfiguration = new ElementRenderingConfiguration
-            {
-                ElementName = "div",
-                HtmlAttributes = new Dictionary<string, object> { { "class", "formFieldComponent" } }
-            };
-        }
-        //EndDocSection:WidgetConfiguration
 
 
         //DocSection:ApplicationError
@@ -60,23 +39,39 @@ namespace LearningKit
         //DocSection:GetVaryByCustom
         public override string GetVaryByCustomString(HttpContext context, string arg)
         {
-            // Defines caching requirements based on the on-line marketing data of the current contact
-            if (arg == "contactdata")
-            {
-                // Gets the current contact, without creating a new anonymous contact for new visitors
-                ContactInfo currentContact = ContactManagementContext.GetCurrentContact(createAnonymous: false);
+            // Creates the options object used to store individual cache key parts
+            IOutputCacheKeyOptions options = OutputCacheKeyHelper.CreateOptions();
 
-                if (currentContact != null)
-                {
-                    // Ensures separate caching for each combination of the following contact variables: contact groups, persona, gender
-                    // Note: This does NOT define separate caching for every contact
-                    return String.Format("ContactData={0}|{1}|{2}",
-                        String.Join("|", currentContact.ContactGroups.Select(c => c.ContactGroupName).OrderBy(x => x)),
-                        currentContact.ContactPersonaID,
-                        currentContact.ContactGender);
-                }
+            // Selects a caching configuration according to the current custom string
+            switch (arg)
+            {
+                case "Default":
+                    // Sets the variables that compose the cache key for the 'Default' VaryByCustom string
+                    options
+                        .VaryByHost()
+                        .VaryByBrowser()
+                        .VaryByUser();
+                    break;
+
+                case "OnlineMarketing":
+                    // Sets the variables that compose the cache key for the 'OnlineMarketing' VaryByCustom string
+                    options
+                        .VaryByCookieLevel()
+                        .VaryByPersona()
+                        .VaryByABTestVariant();
+                    break;
             }
-            
+
+            // Combines individual 'VaryBy' key parts into a cache key under which the output is cached
+            string cacheKey = OutputCacheKeyHelper.GetVaryByCustomString(context, arg, options);
+
+            // Returns the constructed cache key
+            if (!String.IsNullOrEmpty(cacheKey))
+            {
+                return cacheKey;
+            }
+
+            // Calls the base implementation if the provided custom string does not match any predefined configurations
             return base.GetVaryByCustomString(context, arg);
         }
         //EndDocSection:GetVaryByCustom

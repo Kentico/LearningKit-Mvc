@@ -4,6 +4,10 @@ using Kentico.CampaignLogging.Web.Mvc;
 using Kentico.Content.Web.Mvc;
 using Kentico.Newsletters.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc;
+using Kentico.OnlineMarketing.Web.Mvc;
+using Kentico.Content.Web.Mvc.Routing;
+
+using LearningKit.PageTemplateFilters;
 
 namespace LearningKit
 {
@@ -12,7 +16,7 @@ namespace LearningKit
         public static void RegisterFeatures(ApplicationBuilder builder)
         {
             builder.UsePreview();
-            
+
             builder.UsePageBuilder(new PageBuilderOptions() {
                 DefaultSectionIdentifier = "LearningKit.Sections.DefaultSection",
                 RegisterDefaultSection = false
@@ -23,6 +27,13 @@ namespace LearningKit
             builder.UseResourceSharingWithAdministration();
             builder.UseActivityTracking();
             builder.UseEmailTracking(new EmailTrackingOptions());
+            builder.UseABTesting();
+            builder.UsePageRouting(new PageRoutingOptions
+            {
+                EnableAlternativeUrls = true
+            });
+
+            PageBuilderFilters.PageTemplates.Add(new LandingPageTemplateFilter());
         }
     }
 }

@@ -4,7 +4,8 @@ using CMS.DataEngine;
 
 using Kentico.Forms.Web.Mvc;
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+
+namespace LearningKit.FormBuilder.FormComponentProperties
 {
     public class ExamplePropertiesClass : FormComponentProperties<string>
     {
@@ -56,6 +57,15 @@ namespace LearningKit.Models.FormBuilder.CustomFormComponents
         [EditingComponentProperty("CustomProperty", "{$customproperty.value$}")]
         public string ACustomProperty { get; set; }
         //EndDocSection:CustomPropertyConfiguration
+
+
+        //DocSection:DataSourceConfiguration
+        // Assigns a selector component to the SelectedOption property
+        [EditingComponent(DropDownComponent.IDENTIFIER)]
+        // Configures the list options available in the selector
+        [EditingComponentProperty(nameof(DropDownProperties.DataSource), "cz;Czech Republic\r\nusa;United States")]
+        public string SelectedOption { get; set; }
+        //EndDocSection:DataSourceConfiguration
 
 
         // Initializes a new instance of the ExamplePropertiesClass class and configures the underlying database field

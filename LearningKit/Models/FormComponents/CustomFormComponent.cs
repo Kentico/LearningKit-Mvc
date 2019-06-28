@@ -1,17 +1,21 @@
 ﻿using Kentico.Forms.Web.Mvc;
 
-using LearningKit.Models.FormBuilder.CustomFormComponents;
+using LearningKit.FormBuilder.FormComponents;
+using LearningKit.FormBuilder.FormComponentProperties;
 
 //DocSection:FormComponentRegistration
 // Registers a form component for use in the form builder
-[assembly: RegisterFormComponent("CustomFormComponent", typeof(CustomFormComponent), "Custom component", Description = "This is a custom form component.", IconClass = "icon-newspaper")]
+[assembly: RegisterFormComponent(CustomFormComponent.IDENTIFIER, typeof(CustomFormComponent), "Custom component", Description = "This is a custom form component.", IconClass = "icon-newspaper")]
 //EndDocSection:FormComponentRegistration
 
-namespace LearningKit.Models.FormBuilder.CustomFormComponents
+namespace LearningKit.FormBuilder.FormComponents
 {
     //DocSection:FormComponentImplementation
     public class CustomFormComponent : FormComponent<CustomFormComponentProperties, string>
     {
+        public const string IDENTIFIER = "CustomFormComponent";
+
+
         // Specifies the property is used for data binding by the form builder
         [BindableProperty]
         // Used to store the value of the input field of the component
