@@ -61,17 +61,23 @@
 <h2>Page templates</h2>
 <ul>
     <li>
-        @Html.ActionLink("Template-based page", "Index", "LandingPage") <br />
-        <strong>Note</strong>: To create a page based on a template in the Pages application, you need to do the following in your connected Kentico instance:
+        @Html.ActionLink("Template-based page", "Index", "LandingPage", new { pageAlias = "Campaign-1" }, null) <br />
+        <strong>Note</strong>: To create pages based on a template in the Pages application, you need to do the following in your connected Kentico instance:
         <ol>
             <li>
                 Create a content-only page type, with the "LearningKit.LandingPage" code name (Namespace: LearningKit, Name: LandingPage).
             </li>
             <li>
-                On the page type's <em>General</em> tab, set the <em>URL pattern</em> to <span style="font-family: monospace;">/LandingPage</span> and enable <em>Use Page tab</em>.
+                On the page type's <em>General</em> tab, set the <em>URL pattern</em> to <span style="font-family: monospace;">/LandingPage/{%NodeAlias%}</span> and enable <em>Use Page tab</em>.
             </li>
             <li>
-                Create a page in the <em>Pages</em> application using the page type from the first step, and select a page template. The alias path of the page must be: <span style="font-family: monospace;">/LandingPage</span>
+                Set up a page type that will serve as a folder for storing landing pages (for example the default CMS.Folder page type). This page type must allow the Landing page type from the first step as a child page type.
+            </li>
+            <li>
+                In the <em>Pages</em> application, create a "folder" page of the type from step 3 under the website root. The alias path of this page must be: <span style="font-family: monospace;">/Landing-pages</span>
+            </li>
+            <li>
+                Create any number of landing pages under the "folder" page, using the Landing page type from step 1. The default link above opens a landing page with the following alias path: <span style="font-family: monospace;">/Campaign-1</span>
             </li>
         </ol>
     </li>

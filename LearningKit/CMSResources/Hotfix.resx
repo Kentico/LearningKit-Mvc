@@ -543,4 +543,7 @@
   <data name="formfileuploader.temporaryunavailable.eventlog" xml:space="preserve">
     <value>The folder used to store temporary files submitted via on-line forms '{0}' has exceeded the maximum allowed size (500 MB by default). The maximum size can be configured using the 'CMSTemporaryUploadFilesFolderSizeLimit' web.config key.</value>
   </data>
+  <data name="abtesting.popupdialog.cannotmodifyrunningabtest" xml:space="preserve">
+    <value>A running A/B test cannot be modified.</value>
+  </data>
 </root>

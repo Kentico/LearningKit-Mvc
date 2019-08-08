@@ -46,6 +46,12 @@ namespace LearningKit
             //EndDocSection:ProductRoute
 
             routes.MapRoute(
+                name: "LandingPage",
+                url: "LandingPage/{pageAlias}",
+                defaults: new { controller = "LandingPage", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

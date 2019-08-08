@@ -10,13 +10,16 @@ namespace LearningKit.Controllers
     public class LandingPageController : Controller
     {
         //DocSection:PageTemplateAction
-        // A GET action displaying the page where you wish to use page templates
-        public ActionResult Index()
-        {
-            
+        /// <summary>
+        /// A GET action displaying the page where you wish to use page templates.
+        /// </summary>
+        /// <param name="pageAlias">Page alias of the displayed page.</param>
+        public ActionResult Index(string pageAlias)
+        {            
             // Retrieves the page from the Kentico database
             TreeNode page = DocumentHelper.GetDocuments()
-                .Path("/LandingPage")
+                .Path("/Landing-pages", PathTypeEnum.Children)
+                .WhereEquals("NodeAlias", pageAlias)
                 .OnCurrentSite()
                 .TopN(1)
                 .FirstOrDefault();
@@ -31,6 +34,6 @@ namespace LearningKit.Controllers
             // Automatically initializes the page builder feature for any editable areas placed within templates
             return new TemplateResult(page.DocumentID);
         }
-        //EndDocSection:PageTemplateAction            
+        //EndDocSection:PageTemplateAction
     }
 }
