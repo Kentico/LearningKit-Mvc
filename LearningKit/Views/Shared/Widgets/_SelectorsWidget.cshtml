@@ -1,0 +1,53 @@
+﻿@using CMS.MediaLibrary
+@using CMS.SiteProvider
+
+@using Kentico.PageBuilder.Web.Mvc
+
+@using LearningKit.Models.Widgets.SelectorsWidget
+
+@model ComponentViewModel<SelectorsWidgetProperties>
+
+@{
+    // Retrieves GUID of the first selected media file from the 'Images' property
+    Guid guid = Model.Properties.Images?.FirstOrDefault()?.FileGuid ?? Guid.Empty;
+    // Retrieves the MediaFileInfo object that corresponds to the selected media file GUID
+    MediaFileInfo mediaFile = MediaFileInfoProvider.GetMediaFileInfo(guid, SiteContext.CurrentSiteName);
+
+    string url = String.Empty;
+    if (mediaFile != null)
+    {
+        // Retrieves an URL of the selected media file
+        url = MediaLibraryHelper.GetDirectUrl(mediaFile);
+    }
+}
+<h3>This is a dummy widget demonstrating the functionality of selector form components</h3>
+<p>Use the widget properties dialog to select media files or pages from the connected Kentico database.</p>
+
+Selected image: 
+
+<br/>
+<br/>
+
+@* Renders the selected image *@
+@if(url.Equals(String.Empty))
+{
+    <span style="border: 1px solid"><i>placeholder</i></span>
+}
+else
+{
+    <img src="@(url)">
+}
+
+@{
+    // Retrieves the selected Path and Guid values
+    string documentPath = Model.Properties.PagePaths?.FirstOrDefault()?.NodeAliasPath;
+    Guid? documentGuid = Model.Properties.Pages?.FirstOrDefault()?.NodeGuid;
+}
+
+<p>
+    Pages:
+    <ul>
+        <li>Selected document: @documentGuid</li>
+        <li>Selected path: @documentPath</li>
+    </ul>
+</p>

@@ -873,6 +873,7 @@
     <Compile Include="Models\Search\SmartSearch\SearchResultModel.cs" />
     <Compile Include="Models\Widgets\ColorWidget\ColorWidgetProperties.cs" />
     <Compile Include="Models\Widgets\NumberWidget\NumberWidgetProperties.cs" />
+    <Compile Include="Models\Widgets\SelectorsWidget\SelectorsWidgetProperties.cs" />
     <Compile Include="PageTemplateFilters\LandingPageTemplateFilter.cs" />
     <Compile Include="Personalization\ConditionTypes\HasGivenConsentConditionType.cs" />
     <Compile Include="Personalization\ConditionTypes\HasGivenConsentConditionTypeCustom.cs" />
@@ -1075,6 +1076,7 @@
     <Content Include="Kentico\Scripts\builders\Core-icons.ttf" />
     <Content Include="Kentico\Scripts\builders\Core-icons.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\Widgets\_SelectorsWidget.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
