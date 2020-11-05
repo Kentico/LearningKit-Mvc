@@ -1,6 +1,6 @@
 **🛈 This repository is intended as a read-only source of information, and contributions by the general public are not expected.**
 
-# LearningKit
+# Learning Kit
 
  LearningKit is a functional website for learning purposes. It demonstrates how to implement various Kentico features on MVC websites in the form of code snippets, which you can run if you connect the website to a Kentico database.
  
