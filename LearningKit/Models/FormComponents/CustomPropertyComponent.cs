@@ -1,6 +1,6 @@
 ﻿/* 
  * This is a sample form component used to demonstrate manipulation with custom form component properties.
- * For more information, visit the Kentico documentation.
+ * For more information, visit the Xperience documentation.
  */
 
 using Kentico.Forms.Web.Mvc;

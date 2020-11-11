@@ -28,8 +28,8 @@ namespace LearningKit.App_Start.Basic
         public void Configuration(IAppBuilder app)
         {
             // Registers the Kentico.Membership identity implementation
-            app.CreatePerOwinContext(() => UserManager.Initialize(app, new UserManager(new UserStore(SiteContext.CurrentSiteName))));
-            app.CreatePerOwinContext<SignInManager>(SignInManager.Create);
+            app.CreatePerOwinContext(() => KenticoUserManager.Initialize(app, new KenticoUserManager(new KenticoUserStore(SiteContext.CurrentSiteName))));
+            app.CreatePerOwinContext<KenticoSignInManager>(KenticoSignInManager.Create);
 
             // Configures the authentication cookie
             UrlHelper urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);

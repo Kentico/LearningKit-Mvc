@@ -5,7 +5,7 @@
 
 @{
     @* Gets a collection of system HTML attributes necessary for the correct functionality of the form component inputs *@
-    var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    var htmlAttributes = ViewData.Kentico().GetEditorHtmlAttributes();
 
     @* Specifies additional HTML attributes for the form component *@
     htmlAttributes["size"] = Model.Properties.CharacterSize;

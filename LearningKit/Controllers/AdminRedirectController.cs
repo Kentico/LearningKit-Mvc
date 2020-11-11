@@ -10,11 +10,18 @@ namespace LearningKit.Controllers
     //DocSection:AdminRedirectController
     public class AdminRedirectController : Controller
     {
-        // GET: Redirects to the administration interface URL of the connected Kentico application
+        private readonly IAppSettingsService appSettingsService;
+
+        public AdminRedirectController(IAppSettingsService appSettingsService)
+        {
+            this.appSettingsService = appSettingsService;
+        }
+
+        // GET: Redirects to the administration interface URL of the connected Xperience application
         public ActionResult Index()
         {
             // Loads the administration interface URL from the 'CustomAdminUrl' appSettings key in the web.config
-            string adminUrl = CoreServices.AppSettings["CustomAdminUrl"];
+            string adminUrl = appSettingsService["CustomAdminUrl"];
 
             if (!String.IsNullOrEmpty(adminUrl))
             {

@@ -15,25 +15,72 @@ using CMS.Ecommerce;
 using CMS.Membership;
 using CMS.Personas;
 using CMS.Search;
-using CMS.SiteProvider;
 using CMS.WebAnalytics;
+using CMS.Base;
 
 using Kentico.Membership;
+using Kentico.Content.Web.Mvc;
 
 using LearningKit.Models.Products;
 
-
 namespace LearningKit.Areas.CodeSnippets
 {
+    public class PageDataContextInitialization : Controller
+    {
+        //DocSection:PageDataContextInitialize
+        private readonly IPageRetriever pageRetriever;
+        private readonly IPageDataContextInitializer pageDataContextInitializer;
+
+        // Gets instances of required services using dependency injection
+        public PageDataContextInitialization(IPageRetriever pageRetriever,
+                                             IPageDataContextInitializer pageDataContextInitializer)
+        {
+            this.pageRetriever = pageRetriever;
+            this.pageDataContextInitializer = pageDataContextInitializer;
+        }
+
+        public ActionResult Home()
+        {
+            // Retrieves a page from the Xperience database with the '/Home' node alias path
+            TreeNode page = pageRetriever.Retrieve<TreeNode>(query => query
+                                .Path("/Home", PathTypeEnum.Single))
+                                .FirstOrDefault();
+
+            // Responds with the HTTP 404 error when the page is not found
+            if (page == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Initializes the page data context using the retrieved page
+            pageDataContextInitializer.Initialize(page);
+
+            return View();
+        }
+        //EndDocSection:PageDataContextInitialize
+    }
+
     /// <summary>
-    /// This is a dummy class with code snippets used in the Kentico documentation.
+    /// This is a dummy class with code snippets used in the Xperience documentation.
     /// These code snippets do NOT take any part in the runnable LearningKit project.
     /// </summary>
     public class CodeSnippets : Controller
     {
+        private readonly IShoppingService shoppingService;
+        private readonly ICatalogPriceCalculatorFactory catalogPriceCalculatorFactory;
+        private readonly ISiteService siteService;
+        private readonly IPageDataContextRetriever pageRetriever;
 
-        private readonly IShoppingService shoppingService = Service.Resolve<IShoppingService>();
-        private readonly ICatalogPriceCalculatorFactory calculatorFactory = Service.Resolve<ICatalogPriceCalculatorFactory>();
+        public CodeSnippets(IShoppingService shoppingService, 
+                            ICatalogPriceCalculatorFactory catalogPriceCalculatorFactory,
+                            ISiteService siteService,
+                            IPageDataContextRetriever pageRetriever)
+        {
+            this.shoppingService = shoppingService;
+            this.catalogPriceCalculatorFactory = catalogPriceCalculatorFactory;
+            this.siteService = siteService;
+            this.pageRetriever = pageRetriever;
+        }
 
         //DocSection:DifferentShippingAddress
         public bool ShippingAddressIsDifferent { get; set; }
@@ -51,7 +98,7 @@ namespace LearningKit.Areas.CodeSnippets
             PaymentResultInfo result = null;
 
             //DocSection:CalculatePriceOptions
-            ProductCatalogPrices productPrice = Service.Resolve<ICatalogPriceCalculatorFactory>()
+            ProductCatalogPrices productPrice = catalogPriceCalculatorFactory
                .GetCalculator(shoppingCart.ShoppingCartSiteID)
                .GetPrices(productSku, Enumerable.Empty<SKUInfo>(), shoppingCart);
             //EndDocSection:CalculatePriceOptions
@@ -72,9 +119,11 @@ namespace LearningKit.Areas.CodeSnippets
 
             //DocSection:DisplayAttributeSelection
             // Gets the cheapest variant of the product
-            List<ProductVariant> variants = VariantHelper.GetVariants(product.NodeSKUID).OnSite(SiteContext.CurrentSiteID).ToList()
-                .Select(s => new ProductVariant(s.SKUID))
-                .OrderBy(v => v.Variant.SKUPrice).ToList();
+            List<ProductVariant> variants = VariantHelper.GetVariants(product.NodeSKUID)
+                .OnSite(siteService.CurrentSite.SiteID).ToList()
+                    .Select(s => new ProductVariant(s.SKUID))
+                .OrderBy(v => v.Variant.SKUPrice)
+                .ToList();
 
             ProductVariant cheapestVariant = variants.FirstOrDefault();
 
@@ -106,6 +155,11 @@ namespace LearningKit.Areas.CodeSnippets
             order.UpdateOrderStatus(result);
             //EndDocSection:SetPaymentResult
 
+            //DocSection:ImageUrl
+            // Returns the relative path to the image of the provided product
+            string relativeUrl = new FileUrl(sku.SKUImagePath, true).RelativePath;
+            //EndDocSection:ImageUrl
+
             //DocSection:RedirectForManualPayment
             return RedirectToAction("ThankYou", new { orderID = order.OrderID });
             //EndDocSection:RedirectForManualPayment
@@ -114,14 +168,12 @@ namespace LearningKit.Areas.CodeSnippets
 
         //DocSection:DisplayProduct
         /// <summary>
-        /// Displays a product detail page of a product specified by the GUID of the product's page.
+        /// Displays a product detail page of a product.
         /// </summary>
-        /// <param name="guid">Node GUID of the product's page.</param>
-        /// <param name="productAlias">Node alias of the product's page.</param>
-        public ActionResult Detail(Guid guid, string productAlias)
+        public ActionResult Detail()
         {
-            // Gets the product from the connected Kentico database
-            SKUTreeNode product = GetProduct(guid);
+            // Gets the product from the data context
+            SKUTreeNode product = GetProduct();
 
             // If the product is not found or if it is not allowed for sale, redirects to error 404
             if ((product == null) || (product.SKU == null) || !product.SKU.SKUEnabled)
@@ -129,16 +181,10 @@ namespace LearningKit.Areas.CodeSnippets
                 return HttpNotFound();
             }
 
-            // Redirects if the specified page alias does not match
-            if (!string.IsNullOrEmpty(productAlias) && !product.NodeAlias.Equals(productAlias, StringComparison.InvariantCultureIgnoreCase))
-            {
-                return RedirectToActionPermanent("Detail", new { guid = product.NodeGUID, productAlias = product.NodeAlias });
-            }
-
             // Initializes the view model of the product with a calculated price
             ShoppingCartInfo cart = shoppingService.GetCurrentShoppingCart();
 
-            ProductCatalogPrices price = calculatorFactory
+            ProductCatalogPrices price = catalogPriceCalculatorFactory
                 .GetCalculator(cart.ShoppingCartSiteID)
                 .GetPrices(product.SKU, Enumerable.Empty<SKUInfo>(), cart);
 
@@ -146,24 +192,17 @@ namespace LearningKit.Areas.CodeSnippets
             ProductViewModel viewModel = new ProductViewModel(product, price);
 
             // Displays the product details page
-            return View(viewModel);
+            return View("Detail", viewModel);
         }
 
+
         /// <summary>
-        /// Retrieves the product specified by GUID of the product's page.
+        /// Retrieves the product.
         /// </summary>
-        /// <param name="nodeGuid">Node GUID of the product's page.</param>
-        private SKUTreeNode GetProduct(Guid nodeGuid)
+        private SKUTreeNode GetProduct()
         {
-            // Gets the page with the node GUID
-            TreeNode node = DocumentHelper.GetDocuments()
-                            .LatestVersion(false)
-                            .Published(true)
-                            .OnSite(SiteContext.CurrentSiteName)
-                            .Culture("en-US")
-                            .CombineWithDefaultCulture()
-                            .WhereEquals("NodeGUID", nodeGuid)
-                            .FirstOrDefault();
+            // Gets the current page from the router data context
+            TreeNode node = pageRetriever.Retrieve<TreeNode>().Page;
 
             // If the found page is not a product, returns null
             if (node == null || !node.IsProduct())
@@ -185,13 +224,13 @@ namespace LearningKit.Areas.CodeSnippets
             SKUInfo sku = null;
 
             //DocSection:DisplayCatalogDiscounts
-            // Gets the current shopping cart
-            ShoppingCartInfo shoppingCart = Service.Resolve<IShoppingService>().GetCurrentShoppingCart();
+            // Gets the current shopping cart using IShoppingService
+            ShoppingCartInfo shoppingCart = shoppingService.GetCurrentShoppingCart();
 
-            // Calculates prices for the specified product
-            ProductCatalogPrices price = Service.Resolve<ICatalogPriceCalculatorFactory>()
-                .GetCalculator(shoppingCart.ShoppingCartSiteID)
-                .GetPrices(sku, Enumerable.Empty<SKUInfo>(), shoppingCart);
+            // Calculates prices for the specified product using ICatalogPriceCalculatorFactory
+            ProductCatalogPrices price = catalogPriceCalculatorFactory
+                                            .GetCalculator(shoppingCart.ShoppingCartSiteID)
+                                            .GetPrices(sku, Enumerable.Empty<SKUInfo>(), shoppingCart);
 
             // Gets the catalog discount
             decimal catalogDiscount = price.StandardPrice - price.Price;
@@ -203,7 +242,7 @@ namespace LearningKit.Areas.CodeSnippets
         {
             //DocSection:DisplayFreeShippingOffers
             // Gets the current shopping cart
-            ShoppingCartInfo shoppingCart = Service.Resolve<IShoppingService>().GetCurrentShoppingCart();
+            ShoppingCartInfo shoppingCart = shoppingService.GetCurrentShoppingCart();
 
             // Gets the remaining amount for free shipping
             decimal remainingFreeShipping = shoppingCart.CalculateRemainingAmountForFreeShipping();
@@ -214,7 +253,7 @@ namespace LearningKit.Areas.CodeSnippets
         private object DummyEcommerceMethod4()
         {
             int productId = 0;
-            IEnumerable<int> optionIds = new List<int>() { 1, 2, 3}; 
+            IEnumerable<int> optionIds = new List<int>() { 1, 2, 3};
 
             //DocSection:VariantFromOptionIds
             // Retrieves a product variant from a given product ID and a collection of option IDs
@@ -249,15 +288,20 @@ namespace LearningKit.Areas.CodeSnippets
         private void DummySearchMethod()
         {
             //DocSection:InitializeSearch
+            // Prepares variables required to perform the search operation
             IEnumerable<string> searchIndexes = new List<string> { "ProductIndex", "ArticleIndex" };
             int pageNumber = 1;
             int pageSize = 10;
             UserInfo searchUser = MembershipContext.AuthenticatedUser;
             string cultureCode = "en-us";
+            /* Indicates whether the search service uses site default language version of pages as a replacement
+            for pages that are not translated into the language specified by 'cultureCode' */
             bool combineWithDefaultCulture = true;
 
+            // Prepares a 'SearchParameters' object to search through indexes of the 'Pages' type
             SearchParameters searchParameters = SearchParameters.PrepareForPages("search query", searchIndexes, pageNumber, pageSize, searchUser, cultureCode, combineWithDefaultCulture);
 
+            // Searches the specified indexes
             SearchResult searchResult = SearchHelper.Search(searchParameters);
             //EndDocSection:InitializeSearch
         }
@@ -270,14 +314,14 @@ namespace LearningKit.Areas.CodeSnippets
             //EndDocSection:GetCurrentContact
         }
     }
-
+                
     internal class ProductOptionCategoryViewModel
     {
         public ProductOptionCategoryViewModel(int skuID, int selectedOptionID, OptionCategoryInfo category)
         {
         }
     }
-
+                
     internal class OrdersViewModel
     {
         public IEnumerable<OrderInfo> Orders { get; set; }
@@ -290,7 +334,7 @@ namespace LearningKit.Areas.CodeSnippets
 
     public class MembershipController : Controller
     {
-        private string userName = "PlaceHolder";
+        private readonly string userName = "PlaceHolder";
 
         private void DummyContactMergeMethod()
         {
@@ -301,7 +345,7 @@ namespace LearningKit.Areas.CodeSnippets
 
         private async void DummyRoleCheckMethod()
         {
-            UserManager UserManager = HttpContext.GetOwinContext().Get<UserManager>();
+            KenticoUserManager UserManager = HttpContext.GetOwinContext().Get<KenticoUserManager>();
             User CurrentUser = UserManager.FindByName(User.Identity.Name);
 
             //DocSection:CheckRole
@@ -317,11 +361,11 @@ namespace LearningKit.Areas.CodeSnippets
     //DocSection:InternalSearchActivityLoggerInit
     public class SampleSearchController : Controller
     {
-        private readonly IPagesActivityLogger pageActivityLogger;
+        private readonly IPagesActivityLogger pagesActivityLogger;
 
-        public SampleSearchController()
+        public SampleSearchController(IPagesActivityLogger pagesActivityLogger)
         {
-            pageActivityLogger = Service.Resolve<IPagesActivityLogger>();
+            this.pagesActivityLogger = pagesActivityLogger;
 
             // ...
         }
@@ -329,15 +373,40 @@ namespace LearningKit.Areas.CodeSnippets
         // ...
         //EndDocSection:InternalSearchActivityLoggerInit
 
-        private string searchKeywords = "search query";
+        private readonly string searchKeywords = "search query";
 
         private void DummyLogSearchMethod()
         {
             //DocSection:LogInternalSearchActivity
-            pageActivityLogger.LogInternalSearch(searchKeywords);
+            pagesActivityLogger.LogInternalSearch(searchKeywords);
             //EndDocSection:LogInternalSearchActivity
         }
-    }    
+    }
+
+    //DocSection:WishlistActivityLoggerInit
+    public class SampleWishlistController : Controller
+    {
+        private readonly IEcommerceActivityLogger ecommerceActivityLogger;
+
+        public SampleWishlistController(IEcommerceActivityLogger ecommerceActivityLogger)
+        {
+            this.ecommerceActivityLogger = ecommerceActivityLogger;
+
+            // ...
+        }
+
+        // ...
+        //EndDocSection:WishlistActivityLoggerInit
+
+        private readonly SKUInfo wishlistProduct = new SKUInfo();
+
+        private void DummyLogWishlistMethod()
+        {
+            //DocSection:LogWishlistActivity
+            ecommerceActivityLogger.LogProductAddedToWishlistActivity(wishlistProduct);
+            //EndDocSection:LogWishlistActivity
+        }
+    }
 }
 
 namespace LearningKit.Areas.CodeSnippetDuplicates
@@ -347,9 +416,9 @@ namespace LearningKit.Areas.CodeSnippetDuplicates
     {
         private readonly IMembershipActivityLogger membershipActivityLogger;
 
-        public MembershipController()
+        public MembershipController(IMembershipActivityLogger membershipActivityLogger)
         {
-            membershipActivityLogger = Service.Resolve<IMembershipActivityLogger>();
+            this.membershipActivityLogger = membershipActivityLogger;
 
             // ...
         }
@@ -357,7 +426,7 @@ namespace LearningKit.Areas.CodeSnippetDuplicates
         // ...
         //EndDocSection:MembershipActivityLoggerInit
 
-        private string userName = "PlaceHolder";
+        private readonly string userName = "PlaceHolder";
 
         private void DummyLogActivityMethod()
         {
@@ -368,6 +437,6 @@ namespace LearningKit.Areas.CodeSnippetDuplicates
             //DocSection:LogSignInActivity
             membershipActivityLogger.LogLogin(userName);
             //EndDocSection:LogSignInActivity
-        }
+        }        
     }
 }

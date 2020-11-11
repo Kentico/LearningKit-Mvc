@@ -14,7 +14,7 @@ public class MarketingEmailUnsubscribeModel
     }
 
     /// <summary>
-    /// The GUID (identifier) of the Kentico email feed related to the unsubscription request.
+    /// The GUID (identifier) of the Xperience email feed related to the unsubscription request.
     /// </summary>
     [Required]
     public Guid NewsletterGuid
@@ -24,7 +24,7 @@ public class MarketingEmailUnsubscribeModel
     }
 
     /// <summary>
-    /// The GUID (identifier) of the Kentico marketing email related to the unsubscription request.
+    /// The GUID (identifier) of the Xperience marketing email related to the unsubscription request.
     /// </summary>
     [Required]
     public Guid IssueGuid

@@ -1,0 +1,13 @@
+﻿@using Kentico.Forms.Web.Mvc.Widgets
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@using LearningKit.Models.Widgets.ExtendedFormWidget
+
+@model ComponentViewModel<ExtendedFormWidgetProperties>
+
+@* Configurable heading added above the default form widget *@
+<h1>@Model.Properties.HeadingText</h1>
+
+@* Renders the nested form widget *@
+@Html.Kentico().RenderNestedWidget(SystemComponentIdentifiers.FORM_WIDGET_IDENTIFIER, Model.Properties)

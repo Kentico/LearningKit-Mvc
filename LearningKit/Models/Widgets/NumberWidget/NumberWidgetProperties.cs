@@ -6,7 +6,7 @@ namespace LearningKit.Models.Widgets.NumberWidget
     public class NumberWidgetProperties : IWidgetProperties
     {
         // Defines a property and sets its default value
-        // Assigns the default Kentico text input component, which allows users to enter 
+        // Assigns the default Xperience text input component, which allows users to enter 
         // a numeric value for the property in the widget's configuration dialog
         [EditingComponent(IntInputComponent.IDENTIFIER, Order = 0, Label = "Number")]
         public int Number { get; set; } = 22;

@@ -18,7 +18,7 @@ namespace LearningKit.Personalization.ConditionTypes
     public class HasGivenConsentConditionType : ConditionType
     {
         // Parameter: Code name that identifies the consent for which visitors need to give an agreement to fulfill the condition
-        // Assigns the default Kentico text input component to the property, which allows users to enter a text value in the configuration dialog
+        // Assigns the default Xperience text input component to the property, which allows users to enter a text value in the configuration dialog
         [EditingComponent(TextInputComponent.IDENTIFIER, Order = 0, Label = "Consent code name")]        
         public string ConsentCodeName { get; set; }
 
@@ -48,7 +48,7 @@ namespace LearningKit.Personalization.ConditionTypes
             var consentAgreementService = Service.Resolve<IConsentAgreementService>();
 
             // Gets the consent object based on its code name
-            ConsentInfo consent = ConsentInfoProvider.GetConsentInfo(ConsentCodeName);
+            ConsentInfo consent = ConsentInfo.Provider.Get(ConsentCodeName);
             if (consent == null || currentContact == null)
             {
                 return false;

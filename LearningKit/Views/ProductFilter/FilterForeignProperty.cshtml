@@ -13,10 +13,6 @@
     @Html.ActionLink("> Filter based on an SKU property (price)", "FilterSKUProperty")
 </p>
 
-<p>
-    <strong>Note</strong>: This listing does not contain links to products. See the basic listing instead.
-</p>
-
 @using (Html.BeginForm())
 {
     <h3>Manufacturers</h3>
@@ -34,7 +30,7 @@
 
 @foreach (ProductListItemViewModel product in Model.FilteredProducts)
 {
-    <h4>@product.Name</h4>
+    <a href="@product.ProductUrl.AbsoluteUrl"><h4>@product.Name</h4></a>
 
     if (!string.IsNullOrEmpty(product.PublicStatusName))
     {
@@ -43,7 +39,7 @@
 
     if (!string.IsNullOrEmpty(product.ImagePath))
     {
-        <img src="@Url.Kentico().ImageUrl(product.ImagePath, SizeConstraint.MaxWidthOrHeight(300))" alt="@product.Name">
+        <img src="@product.ImagePath" alt="@product.Name">
     }
 
     <div>

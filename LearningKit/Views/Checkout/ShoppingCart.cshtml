@@ -23,6 +23,10 @@ else
         {
             @* Displays the shopping cart item's properties. *@
             <li>
+                @if (cartItem.SKUImageUrl != null)
+                {
+                    <img src="@cartItem.SKUImageUrl" alt="@cartItem.SKUName">
+                }
                 @cartItem.CartItemUnits&times; @cartItem.SKUName ... @String.Format(Model.CurrencyFormatString, cartItem.TotalPrice)
                 @* Allows the item to be removed. *@
                 @using (Html.BeginForm("RemoveItem", "Checkout", FormMethod.Post))

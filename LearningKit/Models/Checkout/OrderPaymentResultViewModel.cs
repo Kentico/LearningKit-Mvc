@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace LearningKit.Models.Checkout
+﻿namespace LearningKit.Models.Checkout
 {
     public class OrderPaymentResultViewModel
     {

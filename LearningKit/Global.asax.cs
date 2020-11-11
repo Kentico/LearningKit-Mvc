@@ -14,11 +14,14 @@ namespace LearningKit
         {
             AreaRegistration.RegisterAllAreas();
 
-            // Enables and configures the selected Kentico ASP.NET MVC integration features
+            // Enables and configures the selected Xperience integration features for ASP.NET MVC 
             ApplicationConfig.RegisterFeatures(ApplicationBuilder.Current);
 
-            // Mapping of routes must be done after registration of Kentico MVC features (using the ApplicationBuilder instance)
+            // Mapping of routes must be done after registration of Xperience MVC features (using the ApplicationBuilder instance)
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // Registers the dependency resolver for the application
+            DependencyResolverConfig.Register();
         }
 
 
@@ -37,13 +40,13 @@ namespace LearningKit
 
 
         //DocSection:GetVaryByCustom
-        public override string GetVaryByCustomString(HttpContext context, string arg)
+        public override string GetVaryByCustomString(HttpContext context, string custom)
         {
             // Creates the options object used to store individual cache key parts
             IOutputCacheKeyOptions options = OutputCacheKeyHelper.CreateOptions();
 
             // Selects a caching configuration according to the current custom string
-            switch (arg)
+            switch (custom)
             {
                 case "Default":
                     // Sets the variables that compose the cache key for the 'Default' VaryByCustom string
@@ -63,7 +66,7 @@ namespace LearningKit
             }
 
             // Combines individual 'VaryBy' key parts into a cache key under which the output is cached
-            string cacheKey = OutputCacheKeyHelper.GetVaryByCustomString(context, arg, options);
+            string cacheKey = OutputCacheKeyHelper.GetVaryByCustomString(context, custom, options);
 
             // Returns the constructed cache key
             if (!String.IsNullOrEmpty(cacheKey))
@@ -72,7 +75,7 @@ namespace LearningKit
             }
 
             // Calls the base implementation if the provided custom string does not match any predefined configurations
-            return base.GetVaryByCustomString(context, arg);
+            return base.GetVaryByCustomString(context, custom);
         }
         //EndDocSection:GetVaryByCustom
     }

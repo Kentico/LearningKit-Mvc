@@ -2,8 +2,7 @@
 {
     public class MediaFileViewModel
     {
-        public string FileTitle;
-        public string PermanentUrl;
-        public string DirectUrl;
+        public string FileTitle { get; set; }
+        public string RelativeUrl { get; set; }
     }
 }

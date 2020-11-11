@@ -1,4 +1,4 @@
-﻿@model Kentico.Membership.User
+﻿@model EditUserAccountViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,24 +7,75 @@
 
 <h2>Edit user details</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.Kentico().AntiForgeryToken()
+
+        <div>
+            @Html.LabelFor(model => model.User.UserName)
+            @Html.TextBoxFor(model => model.User.UserName, new { @disabled = "disabled" })
+        </div>
+        <div>
+            @Html.LabelFor(model => model.User.FirstName)
+            @Html.TextBoxFor(model => model.User.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(model => model.User.LastName)
+            @Html.TextBoxFor(model => model.User.LastName)
+        </div>
+        <input type="submit" value="Save changes" />
+    }
+</div>
+
+<br />
+
+@*DocSection:UserAvatarView*@
+@using Kentico.Membership.Web.Mvc
+
+<div>
+    <h2>User Avatar</h2>
     <div>
-        @Html.LabelFor(model => model.UserName)
-        @Html.TextBoxFor(model => model.UserName, new { @disabled = "disabled" })
+        @* Generates a link to a user's avatar (or a default one if specified and a user avatar is not found).
+            Note that the properties constraining avatar dimensions do not work for default avatars. *@
+        <img src="@Url.Kentico().AvatarUrl(Model.User.UserName, maxSideSize: 500, width: 500, height: 500, pathToDefaultAvatar: " ~/Content/Images/default-avatar.png")" />
+
+        <br />
+
+        <button>
+            <div onclick="document.getElementById('avatarUpload').click()">Change avatar</div>
+        </button>
     </div>
-    <div>
-        @Html.LabelFor(model => model.FirstName)
-        @Html.TextBoxFor(model => model.FirstName)
-    </div>
-    <div>
-        @Html.LabelFor(model => model.LastName)
-        @Html.TextBoxFor(model => model.LastName)
-    </div>
-    <input type="submit" value="Save changes" />
-}
+
+    @* Displays an error message in case the user uploaded a file with an unsupported file extension.
+        Supported file extensions can be configured in Settings -> System -> Files -> Upload extensions in the Administration interface. *@
+    @if (Model.AvatarUpdateFailed)
+    {
+        <div>
+            <span>Please upload a valid image file.</span>
+        </div>
+    }
+
+    @using (@Html.BeginForm("ChangeAvatar", "Account", FormMethod.Post, new { enctype = "multipart/form-data", id = "avatarUploadForm", style = "display:none;" }))
+    {
+        // Generates a hidden field holding an anti-forgery token
+        // The Xperience API version of this method ensures tokens are correctly generated for pages where output caching is enabled
+        @Html.Kentico().AntiForgeryToken()
+        @Html.TextBox("avatarUpload", "", new { type = "file", id = "avatarUpload", accept = "image/*", onchange = "document.getElementById('avatarUploadForm').submit()" })
+    }
+</div>
+@*EndDocSection:UserAvatarView*@
+
+<div>
+    @using (@Html.BeginForm("DeleteAvatar", "Account", FormMethod.Post))
+    {
+        // Generates a hidden field holding an anti-forgery token
+        // The Xperience API version of this method ensures tokens are correctly generated for pages where output caching is enabled
+        @Html.Kentico().AntiForgeryToken()
+        @Html.TextBox("userId", Model.User.Id, new { id = "userId", style = "display:none;" })
+        <input type="submit" value="Delete avatar" />
+    }
+</div>
 
 <p>
     @Html.ActionLink("> Back to the home index", "Index", "Home")

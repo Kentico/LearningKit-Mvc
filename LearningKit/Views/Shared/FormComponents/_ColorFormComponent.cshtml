@@ -4,7 +4,7 @@
 
 @{
     // Gets a collection of system HTML attributes necessary for the functionality of form component inputs
-    IDictionary<string, object> htmlAttributes = ViewData.GetEditorHtmlAttributes();
+    IDictionary<string, object> htmlAttributes = ViewData.Kentico().GetEditorHtmlAttributes();
 
     // Prepares data that will be passed to the function that opens the modal dialog
     string dialogData = Newtonsoft.Json.JsonConvert.SerializeObject(new

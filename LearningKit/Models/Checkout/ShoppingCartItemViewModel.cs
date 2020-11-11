@@ -13,6 +13,8 @@ namespace LearningKit.Models.Checkout
 
         public int SKUID { get; set; }
 
+        public string SKUImageUrl { get; set; }
+
         public int CartItemUnits { get; set; }
 
         public decimal TotalPrice { get; set; }

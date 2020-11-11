@@ -8,7 +8,7 @@
 
 <h3 style="background-color: #dddddd;">The number you chose for today is: @Model.Properties.Number</h3>
 
-@* Shows an inline editor when rendered in the edit mode of the Pages application in Kentico *@
+@* Shows an inline editor when rendered in the edit mode of the Pages application in Xperience *@
 @if (Context.Kentico().PageBuilder().EditMode)
 {
     Html.RenderPartial("InlineEditors/_NumberEditor", new NumberEditorModel

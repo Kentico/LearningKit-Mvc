@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using CMS.Ecommerce;
+
 
 namespace LearningKit.Models.Checkout
 {
@@ -25,15 +24,15 @@ namespace LearningKit.Models.Checkout
 
         public string OrderStatusDisplayName { get; set; }
 
-        public OrderViewModel(OrderInfo order)
+        public OrderViewModel(OrderInfo order, ICurrencyInfoProvider currencyInfoProvider)
         {
             OrderID = order.OrderID;
             OrderStatusID = order.OrderStatusID;
-            CurrencyFormatString = CurrencyInfoProvider.GetCurrencyInfo(order.OrderCurrencyID).CurrencyFormatString;
+            CurrencyFormatString = currencyInfoProvider.Get(order.OrderCurrencyID).CurrencyFormatString;
             OrderDate = order.OrderDate;
             OrderTotalPrice = order.OrderTotalPrice;
             OrderIsPaid = order.OrderIsPaid;
-            OrderStatusDisplayName = OrderStatusInfoProvider.GetOrderStatusInfo(order.OrderStatusID)?.StatusDisplayName;
+            OrderStatusDisplayName = OrderStatusInfo.Provider.Get(order.OrderStatusID)?.StatusDisplayName;
             if (order.OrderPaymentResult != null)
             {
                 OrderPaymentResult = new OrderPaymentResultViewModel()

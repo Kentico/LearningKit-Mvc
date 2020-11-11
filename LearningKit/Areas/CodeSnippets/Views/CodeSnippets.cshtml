@@ -1,12 +1,6 @@
-﻿@* This is a dummy view file with code snippets used in the Kentico documentation. *@
+﻿@* This is a dummy view file with code snippets used in the Xperience documentation. *@
 @* These code snippets do NOT take any part in the runnable LearningKit project. *@
-
-@using Kentico.Web.Mvc
-
 @{
-    string productImagePath = "";
-    int width = 0;
-    int height = 0;
     var model = new
     {
         SKUID = 1,
@@ -15,13 +9,6 @@
 }
 
 @* E-commerce *@
-@*DocSection:ImageUrl*@
-@Url.Kentico().ImageUrl(productImagePath, SizeConstraint.Size(width, height))
-@*EndDocSection:ImageUrl*@
-
-@*DocSection:ImageUrlExample*@
-<img src="@Url.Kentico().ImageUrl("~/image.jpg", SizeConstraint.Size(300, 300))" alt="Product image" />
-@*EndDocSection:ImageUrlExample*@
 
 @*DocSection:ItemDetailActionLink*@
 @Html.ActionLink(model.SKUName, "ItemDetail", new { skuId = model.SKUID })
@@ -57,20 +44,3 @@
     }
 }
 @*EndDocSection:ContactGroupPersonalization*@
-
-@* Media library files *@
-@using Kentico.Content.Web.Mvc
-
-@{
-    var mediaFile = new
-    {
-        PermanentUrl = ""
-    };
-}
-
-@*DocSection:MediaFileUrl*@
-@{
-    // Generates a URL for the media file that forces download
-    Url.Kentico().FileUrl(mediaFile.PermanentUrl, new FileUrlOptions() { AttachmentContentDisposition = true });
-}
-@*EndDocSection:MediaFileUrl*@

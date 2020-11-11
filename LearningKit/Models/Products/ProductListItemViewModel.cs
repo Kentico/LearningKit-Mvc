@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CMS.Ecommerce;
 
-using CMS.Ecommerce;
+using Kentico.Content.Web.Mvc;
 
 namespace LearningKit.Models.Products
 {
@@ -11,9 +11,8 @@ namespace LearningKit.Models.Products
         public string Name;
         public string ImagePath;
         public string PublicStatusName;
+        public PageUrl ProductUrl;
         public bool Available;
-        public Guid ProductPageGuid;
-        public string ProductPageAlias;
         
         /// <summary>
         /// Constructor for the ProductListItemViewModel class.
@@ -21,15 +20,18 @@ namespace LearningKit.Models.Products
         /// <param name="productPage">Product's page.</param>
         /// <param name="priceDetail">Price of the product.</param>
         /// <param name="publicStatusName">Display name of the product's public status.</param>
-        public ProductListItemViewModel(SKUTreeNode productPage, ProductCatalogPrices priceDetail, string publicStatusName)
+        public ProductListItemViewModel(SKUTreeNode productPage, ProductCatalogPrices priceDetail, IPageUrlRetriever urlRetriever, string publicStatusName)
         {
             // Sets the page information
             Name = productPage.DocumentName;
-            ProductPageGuid = productPage.NodeGUID;
-            ProductPageAlias = productPage.NodeAlias;
+            ProductUrl = urlRetriever.Retrieve(productPage);
             
             // Sets the SKU information
-            ImagePath = productPage.SKU.SKUImagePath;
+            ImagePath = string.IsNullOrEmpty(productPage.SKU.SKUImagePath) ?
+                            null : new FileUrl(productPage.SKU.SKUImagePath, true)
+                                        .WithSizeConstraint(SizeConstraint.MaxWidthOrHeight(400))
+                                        .RelativePath;
+
             Available = !productPage.SKU.SKUSellOnlyAvailable || productPage.SKU.SKUAvailableItems > 0;
             PublicStatusName = publicStatusName;
 

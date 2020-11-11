@@ -20,14 +20,13 @@ window.kentico._forms.formFileUploaderComponent = (function (document) {
         });
     }
 
-    function clearTempFile(fileInput, inputReplacementFilename, inputPlaceholder, tempFileIdentifierInput, tempFileOriginalNameInput, inputTextButton, inputIconButton) {
+    function clearTempFile(fileInput, inputReplacementFilename, inputPlaceholder, tempFileIdentifierInput, inputTextButton, inputIconButton) {
         fileInput.value = null;
         fileInput.removeAttribute("hidden");
         inputReplacementFilename.setAttribute("hidden", "hidden");
 
         inputPlaceholder.innerText = inputPlaceholder.originalText;
         tempFileIdentifierInput.value = "";
-        tempFileOriginalNameInput.value = "";
 
         inputTextButton.setAttribute("hidden", "hidden");
         inputIconButton.setAttribute("data-icon", "select");
@@ -42,10 +41,10 @@ window.kentico._forms.formFileUploaderComponent = (function (document) {
         var inputIconButton = document.getElementById(config.fileInputId + "-icon");
 
         var tempFileIdentifierInput = document.getElementById(config.tempFileIdentifierInputId);
-        var tempFileOriginalNameInput = document.getElementById(config.tempFileOriginalNameInputId);
         var systemFileNameInput = document.getElementById(config.systemFileNameInputId);
         var originalFileNameInput = document.getElementById(config.originalFileNameInputId);
         var deletePersistentFileInput = document.getElementById(config.deletePersistentFileInputId);
+        var tempFileOriginalName = config.tempFileOriginalName;
 
         var deleteFileIconButtonTitle = config.deleteFileIconButtonTitle;
 
@@ -53,8 +52,9 @@ window.kentico._forms.formFileUploaderComponent = (function (document) {
         inputTextButton.originalText = inputTextButton.innerText;
 
         // If a file is selected, set text of the label and file input replacement to its filename.
-        if (tempFileOriginalNameInput.value || (originalFileNameInput.value && deletePersistentFileInput.value.toUpperCase() === "FALSE")) {
-            inputPlaceholder.innerText = tempFileOriginalNameInput.value || config.originalFileNamePlain;
+        if ((originalFileNameInput.value || tempFileOriginalName)
+            && deletePersistentFileInput.value.toUpperCase() === "FALSE") {
+            inputPlaceholder.innerText = config.originalFileNamePlain || tempFileOriginalName;
 
             inputTextButton.removeAttribute("hidden");
             inputIconButton.setAttribute("data-icon", "remove");
@@ -81,7 +81,7 @@ window.kentico._forms.formFileUploaderComponent = (function (document) {
 
             deleteTempFile();
 
-            clearTempFile(fileInput, inputReplacementFilename, inputPlaceholder, tempFileIdentifierInput, tempFileOriginalNameInput, inputTextButton, inputIconButton);
+            clearTempFile(fileInput, inputReplacementFilename, inputPlaceholder, tempFileIdentifierInput, inputTextButton, inputIconButton);
         };
         // Wrapper for the deleteFile function used when the icon button is clicked.
         var deleteFileIcon = function (event) {
@@ -151,7 +151,6 @@ window.kentico._forms.formFileUploaderComponent = (function (document) {
                             var filename = fileInput.files[0].name;
 
                             tempFileIdentifierInput.value = result.fileIdentifier;
-                            tempFileOriginalNameInput.value = filename;
 
                             inputPlaceholder.innerText = filename;
                             inputTextButton.removeAttribute("hidden");

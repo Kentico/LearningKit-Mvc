@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Linq;
 
 using CMS.Ecommerce;
+
+using Kentico.Content.Web.Mvc;
+
 
 namespace LearningKit.Models.Products
 {
@@ -16,8 +18,6 @@ namespace LearningKit.Models.Products
         public readonly string ShortDescription;
         public readonly int SKUID;
         public readonly string ImagePath;
-        public readonly Guid ProductPageGuid;
-        public readonly string ProductPageAlias;
         public readonly bool IsInStock;
         
         /// <summary>
@@ -31,13 +31,14 @@ namespace LearningKit.Models.Products
             Name = productPage.DocumentName;
             Description = productPage.DocumentSKUDescription;
             ShortDescription = productPage.DocumentSKUShortDescription;
-            ProductPageGuid = productPage.NodeGUID;
-            ProductPageAlias = productPage.NodeAlias;
             
             // Fills the SKU information
             SKUInfo sku = productPage.SKU;
             SKUID = sku.SKUID;
-            ImagePath = sku.SKUImagePath;
+            ImagePath = string.IsNullOrEmpty(sku.SKUImagePath) ? null : new FileUrl(sku.SKUImagePath, true)
+                                                                            .WithSizeConstraint(SizeConstraint.MaxWidthOrHeight(400))
+                                                                            .RelativePath;
+
             IsInStock = sku.SKUTrackInventory == TrackInventoryTypeEnum.Disabled ||
                         sku.SKUAvailableItems > 0;
 
@@ -77,7 +78,7 @@ namespace LearningKit.Models.Products
                 
                 if (selectedVariant != null)
                 {
-                    IsInStock = ((selectedVariant.Variant.SKUTrackInventory == TrackInventoryTypeEnum.Disabled) || (selectedVariant.Variant.SKUAvailableItems > 0));
+                    IsInStock = (selectedVariant.Variant.SKUTrackInventory == TrackInventoryTypeEnum.Disabled) || (selectedVariant.Variant.SKUAvailableItems > 0);
                     SelectedVariantID = selectedVariantID;
                 }
                 

@@ -1,7 +1,7 @@
 ﻿(function () {
   var init = function () {
     var component = document.getElementsByTagName("kentico-media-files")[0];
-    var data = window.kentico.modalDialog.getData();
+    var data = window.kentico.modalDialog.getData().media;
     component.getString = window.kentico.localization.getString;
     component.values = data.selectedValues;
     component.libraryName = data.libraryName;

@@ -1,7 +1,7 @@
 ﻿using Kentico.Forms.Web.Mvc;
 using LearningKit.FormBuilder.FormComponents;
 
-[assembly: RegisterFormComponent(ColorFormComponent.IDENTIFIER, typeof(ColorFormComponent), "Color component", IconClass = "icon-newspaper")]
+[assembly: RegisterFormComponent(ColorFormComponent.IDENTIFIER, typeof(ColorFormComponent), "Color component", IsAvailableInFormBuilderEditor = false, IconClass = "icon-newspaper")]
 
 namespace LearningKit.FormBuilder.FormComponents
 {

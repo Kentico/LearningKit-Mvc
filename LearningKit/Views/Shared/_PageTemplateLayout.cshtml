@@ -14,14 +14,18 @@
     <meta charset="UTF-8" />
     <title>@ViewBag.Title - Learning Kit</title>
     @Html.Kentico().PageBuilderStyles()
+
+    @* Registers scripts that ensure logging of campaign page visits and page-related activities *@
+    @Html.Kentico().ActivityLoggingScript()
+
     @* Registers scripts that ensure logging of analytics data for A/B tests *@
     @Html.Kentico().ABTestLoggerScript()
+
+    @* Registers scripts that provide logging of web analytics data *@
+    @Html.Kentico().WebAnayticsLoggingScript()
 </head>
 <body>
     @RenderBody()
-    @Html.Kentico().PageBuilderScripts()
-    
-    @* Registers scripts that ensure logging of campaign page visits and page-related activities *@
-    @Html.Kentico().ActivityLoggingScript()
+    @Html.Kentico().PageBuilderScripts()        
 </body>
 </html>

@@ -1,10 +1,10 @@
-﻿using System.Web.Mvc;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 using CMS.DocumentEngine;
 
 using Kentico.Forms.Web.Mvc;
+using Kentico.Web.Mvc;
 
 using LearningKit.FormBuilder.FormComponents;
 using LearningKit.FormBuilder.FormComponentProperties;
@@ -20,7 +20,7 @@ namespace LearningKit.FormBuilder.FormComponents
 
 
         // Retrieves data to be displayed in the selector
-        protected override IEnumerable<SelectListItem> GetItems()
+        protected override IEnumerable<HtmlOptionItem> GetHtmlOptions()
         {
             // Perform data retrieval operations here
             // The following example retrieves all pages of the 'DancingGoatMvc.Article' page type 
@@ -32,13 +32,13 @@ namespace LearningKit.FormBuilder.FormComponents
                                 .Culture("en-us")
                                 .LatestVersion();
 
-            var sampleData = query.TypedResult.Select(x => new { Name = x.DocumentName,
+            var sampleData = query.ToList().Select(x => new { Name = x.DocumentName,
                                                                  Guid = x.DocumentGUID.ToString() });
 
             // Iterates over retrieved data and transforms it into SelectListItems
             foreach (var item in sampleData)
             {
-                var listItem = new SelectListItem()
+                var listItem = new HtmlOptionItem()
                 {
                     Value = item.Guid,
                     Text = item.Name

@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-components.loadBundle("chunk-5dc1aa56.js",["exports"],function(n){window.components.h,n.POP_UP_CONTAINER_WIDTH=300,n.DIALOG_FOOTER_HEIGHT=64,n.DIALOG_HEADER_HEIGHT=36});

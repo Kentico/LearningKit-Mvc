@@ -1,0 +1,42 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.Content.Web.Mvc.Routing
+@using Kentico.PageBuilder.Web.Mvc
+@using Kentico.Web.Mvc
+
+@model IPageViewModel<TreeNode>
+
+@{
+    ViewBag.Title = "Page with the page builder";
+}
+
+@Html.Kentico().PageBuilderStyles()
+
+<h2>@Model.Page.DocumentName</h2>
+
+<h3>Editable area</h3>
+<div>
+    @Html.Kentico().EditableArea("area1")
+</div>
+
+
+<h3>Editable area with selected default section</h3>
+<div>
+    @Html.Kentico().EditableArea("areaWithSection", new EditableAreaOptions { DefaultSectionIdentifier = "LearningKit.Sections.Col5050"})
+</div>
+
+<h3>Limited editable area</h3>
+<div>
+    @{
+        string[] allowedWidgets = { Kentico.Content.Web.Mvc.SystemComponentIdentifiers.FORM_WIDGET_IDENTIFIER,
+                                    "LearningKit.Widgets.NumberWidget",
+                                    "LearningKit.Widgets.SomeOtherWidget" };
+    }
+    @Html.Kentico().EditableArea("limitedArea", new EditableAreaOptions { AllowedWidgets = allowedWidgets })
+</div>
+
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>
+
+@Html.Kentico().PageBuilderScripts()

@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Product listing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using LearningKit.Models.Products
+@*DocSection:ListingTable*@
+@model IEnumerable<ProductListItemViewModel>
+
+<h2>Product listing of the LearningProductType</h2>
+
+<div>
+    @* Iterates over all products. *@
+    @foreach (ProductListItemViewModel product in Model)
+    {
+        @* Generates a URL leading to the product's detail page. *@
+        <a href="@product.ProductUrl.AbsoluteUrl">
+            <h3>@product.Name</h3>
+
+            @* Displays information about the product's public status. *@
+            @if (!string.IsNullOrEmpty(product.PublicStatusName))
+            {
+                <span>@product.PublicStatusName</span>
+            }
+
+            @* Displays the product's image. *@
+            @if (!string.IsNullOrEmpty(product.ImagePath))
+            {
+                <img src="@product.ImagePath" alt="@product.Name">
+            }
+
+            @* Displays the product's other properties. *@
+            <div>
+                @if (!product.Available)
+                {
+                    <span>Out of stock</span>
+                }
+
+                <span>@String.Format(product.PriceModel.CurrencyFormatString, product.PriceModel.Price)</span>
+
+                @if (product.PriceModel.ListPrice > product.PriceModel.Price)
+                {
+                    <s>@String.Format(product.PriceModel.CurrencyFormatString, product.PriceModel.ListPrice)</s>
+                }
+            </div>
+        </a>
+    }
+</div>
+@*EndDocSection:ListingTable*@
+
+<p>
+    @Html.ActionLink("> Back to the home index", "Index", "Home")
+</p>

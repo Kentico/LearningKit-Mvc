@@ -1,7 +1,4 @@
-﻿@using System.Web.Mvc
-
-@using Kentico.Activities.Web.Mvc
-@using Kentico.Content.Web.Mvc.Routing
+﻿@using Kentico.Activities.Web.Mvc
 @using Kentico.OnlineMarketing.Web.Mvc
 @using Kentico.Web.Mvc
 
@@ -16,39 +13,25 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Learning Kit</title>
 
-    @{
-        string canonicalUrl;
-        // Attempts to get the main URL of the displayed page
-        string pageMainUrl = Url.Kentico().PageMainUrl();
-        // Checks whether an alternative URL rewrite occurred for the displayed page
-        if (!String.IsNullOrEmpty(pageMainUrl))
-        {
-            // Sets the canonical URL to the displayed page's main URL in absolute form, 
-            // using the current request's scheme and authority
-            string requestAuthority = Url.RequestContext.HttpContext.Request.Url.GetLeftPart(UriPartial.Authority);
-            canonicalUrl = requestAuthority + Url.Content(pageMainUrl);
-        }
-        // If an alternative URL rewrite did not occur, the page main URL is empty 
-        else
-        {
-            // Sets the canonical URL to the current request's URI (without the fragment or query string parameters)
-            canonicalUrl = Url.RequestContext.HttpContext.Request.Url.GetLeftPart(UriPartial.Path);
-        }
-    }
-
     @* Renders a canonical link element *@
-    <link rel="canonical" href="@canonicalUrl" />
+    <link rel="canonical" href="@Url.Kentico().PageCanonicalUrl()" />
+
+    @*DocSection:VisitorActionScript*@
+    @* Registers scripts that ensure logging of campaign page visits and page-related activities *@
+    @Html.Kentico().ActivityLoggingScript()
+    @*EndDocSection:VisitorActionScript*@
 
     @*DocSection:AbTestingScript*@
     @* Registers scripts that ensure logging of analytics data for A/B tests *@
     @Html.Kentico().ABTestLoggerScript()
     @*EndDocSection:AbTestingScript*@
+
+    @*DocSection:WebAnalyticsScript*@
+    @* Registers scripts that provide logging of web analytics data *@
+    @Html.Kentico().WebAnalyticsLoggingScript()
+    @*EndDocSection:WebAnalyticsScript*@
 </head>
 <body>
-    @RenderBody()
-    @*DocSection:VisitorActionScript*@
-    @* Registers scripts that ensure logging of campaign page visits and page-related activities *@
-    @Html.Kentico().ActivityLoggingScript()
-    @*EndDocSection:VisitorActionScript*@
+    @RenderBody()    
 </body>
 </html>

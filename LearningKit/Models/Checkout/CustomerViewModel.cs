@@ -1,6 +1,7 @@
-﻿using CMS.Ecommerce;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+
+using CMS.Ecommerce;
 
 namespace LearningKit.Models.Checkout
 {

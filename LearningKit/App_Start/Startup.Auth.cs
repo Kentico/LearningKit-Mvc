@@ -2,21 +2,22 @@
 using System.Web;
 using System.Web.Mvc;
 
+using Microsoft.AspNet.Identity;
+
+using Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.AspNet.Identity;
-using Owin;
+using Microsoft.Owin.Security.WsFederation;
+using Microsoft.Owin.Security.OpenIdConnect;
+using Microsoft.Owin.Security.Facebook;
+using Microsoft.Owin.Security.Google;
 
 using CMS.Helpers;
 using CMS.SiteProvider;
 
 using Kentico.Membership;
 
-using Microsoft.Owin.Security.WsFederation;
-using Microsoft.Owin.Security.OpenIdConnect;
-using Microsoft.Owin.Security.Facebook;
-using Microsoft.Owin.Security.Google;
 
 // Assembly attribute that sets the OWIN startup class
 [assembly: OwinStartup(typeof(LearningKit.App_Start.Startup))]
@@ -32,8 +33,8 @@ namespace LearningKit.App_Start
         public void Configuration(IAppBuilder app)
         {
             // Registers the Kentico.Membership identity implementation
-            app.CreatePerOwinContext(() => UserManager.Initialize(app, new UserManager(new UserStore(SiteContext.CurrentSiteName))));
-            app.CreatePerOwinContext<SignInManager>(SignInManager.Create);
+            app.CreatePerOwinContext(() => KenticoUserManager.Initialize(app, new KenticoUserManager(new KenticoUserStore(SiteContext.CurrentSiteName))));
+            app.CreatePerOwinContext<KenticoSignInManager>(KenticoSignInManager.Create);
 
             // Configures the authentication cookie
             UrlHelper urlHelper = new UrlHelper(HttpContext.Current.Request.RequestContext);
@@ -75,7 +76,7 @@ namespace LearningKit.App_Start
                     // Set any properties required by your authentication service
                     ClientId = "placeholder",
                     ClientSecret = "placeholder",
-                    Authority = "placeholder",
+                    Authority = "https://placeholder",
                     AuthenticationMode = AuthenticationMode.Passive
                 });
 

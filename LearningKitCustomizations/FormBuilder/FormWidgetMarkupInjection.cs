@@ -19,9 +19,9 @@ namespace FormBuilderCustomizations
         {
             e.Configuration.FormWrapperConfiguration = new FormWrapperRenderingConfiguration
             {
-                // Renders the form's display name above the form using the 'CustomHtmlEnvelope' property
+                // Renders the form's display name above the form using the 'CustomHtmlEnvelopeString' property
                 // FormWrapperRenderingConfiguration.CONTENT_PLACEHOLDER acts as a placeholder for the form's body in the resulting markup
-                CustomHtmlEnvelope = MvcHtmlString.Create($@"<h1>{e.Form.FormDisplayName}</h1> {FormWrapperRenderingConfiguration.CONTENT_PLACEHOLDER}")
+                CustomHtmlEnvelopeString = $@"<h1>{e.Form.FormDisplayName}</h1> {FormWrapperRenderingConfiguration.CONTENT_PLACEHOLDER}"
             };
 
             // Sets additional attributes only for specific forms. Since the 'class' attribute is fairly

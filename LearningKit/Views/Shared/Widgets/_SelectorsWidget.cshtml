@@ -1,53 +1,37 @@
-﻿@using CMS.MediaLibrary
-@using CMS.SiteProvider
+﻿@model LearningKit.Models.Widgets.SelectorsWidget.SelectorsWidgetViewModel
 
-@using Kentico.PageBuilder.Web.Mvc
-
-@using LearningKit.Models.Widgets.SelectorsWidget
-
-@model ComponentViewModel<SelectorsWidgetProperties>
-
-@{
-    // Retrieves GUID of the first selected media file from the 'Images' property
-    Guid guid = Model.Properties.Images?.FirstOrDefault()?.FileGuid ?? Guid.Empty;
-    // Retrieves the MediaFileInfo object that corresponds to the selected media file GUID
-    MediaFileInfo mediaFile = MediaFileInfoProvider.GetMediaFileInfo(guid, SiteContext.CurrentSiteName);
-
-    string url = String.Empty;
-    if (mediaFile != null)
-    {
-        // Retrieves an URL of the selected media file
-        url = MediaLibraryHelper.GetDirectUrl(mediaFile);
-    }
-}
 <h3>This is a dummy widget demonstrating the functionality of selector form components</h3>
-<p>Use the widget properties dialog to select media files or pages from the connected Kentico database.</p>
+<p>Use the widget properties dialog to select media files or pages from the connected Xperience database.</p>
 
-Selected image: 
+Selected image:
 
-<br/>
-<br/>
+<br />
 
 @* Renders the selected image *@
-@if(url.Equals(String.Empty))
+@if (Model.MediaFileUrl.Equals(String.Empty))
 {
-    <span style="border: 1px solid"><i>placeholder</i></span>
+    <span style="border: 1px solid"><em>image placeholder</em></span>
 }
 else
 {
-    <img src="@(url)">
-}
-
-@{
-    // Retrieves the selected Path and Guid values
-    string documentPath = Model.Properties.PagePaths?.FirstOrDefault()?.NodeAliasPath;
-    Guid? documentGuid = Model.Properties.Pages?.FirstOrDefault()?.NodeGuid;
+    <img src="@Model.MediaFileUrl">
 }
 
 <p>
     Pages:
     <ul>
-        <li>Selected document: @documentGuid</li>
-        <li>Selected path: @documentPath</li>
+        <li>Selected document: @Model.DocumentGuid</li>
+        <li>Selected path: @Model.DocumentPath</li>
     </ul>
 </p>
+
+Selected attachment:
+@* Creates a download link for the selected attachment *@
+@if (Model.AttachmentUrl.Equals(String.Empty))
+{
+    <span style="border: 1px solid"><i>placeholder</i></span>
+}
+else
+{
+    <a href="@Model.AttachmentUrl)">Click to download attachment</a>
+}

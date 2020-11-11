@@ -12,8 +12,9 @@ window.kentico = window.kentico || {};
 
     var init = function (id, filesData) {
         var component = document.getElementById(id);
+        component.openDialog = window.kentico.modalDialog.mediaFilesSelector.open;
         component.getString = window.kentico.localization.getString;
-        component.selectedData = filesData;
+        component.selectedFiles = JSON.parse(filesData);
     };
 
     const modalDialogInternal = namespace._modalDialog = namespace._modalDialog || {};

@@ -50,7 +50,7 @@ namespace LearningKit.Personalization.ConditionTypes
             var consentAgreementService = Service.Resolve<IConsentAgreementService>();
 
             // Gets the consent object based on its code name
-            ConsentInfo consent = ConsentInfoProvider.GetConsentInfo(ConsentCodeName);
+            ConsentInfo consent = ConsentInfo.Provider.Get(ConsentCodeName);
             if (consent == null || currentContact == null)
             {
                 return false;

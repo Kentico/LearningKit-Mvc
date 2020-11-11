@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningKit", "LearningKit\LearningKit.csproj", "{3561E1B0-8BF6-4187-A581-1B0801168CDD}"
 EndProject
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {17439544-5107-4524-A710-F87DD75FCD6D}
+		SolutionGuid = {09B9ACA6-A295-4ED1-9E22-2594DCACB170}
 	EndGlobalSection
 EndGlobal

@@ -15,8 +15,6 @@ namespace LearningKit
     {
         public static void RegisterFeatures(ApplicationBuilder builder)
         {
-            builder.UsePreview();
-
             builder.UsePageBuilder(new PageBuilderOptions() {
                 DefaultSectionIdentifier = "LearningKit.Sections.DefaultSection",
                 RegisterDefaultSection = false
@@ -24,10 +22,10 @@ namespace LearningKit
 
             builder.UseDataAnnotationsLocalization();
             builder.UseCampaignLogger();
-            builder.UseResourceSharingWithAdministration();
             builder.UseActivityTracking();
-            builder.UseEmailTracking(new EmailTrackingOptions());
+            builder.UseEmailTracking();
             builder.UseABTesting();
+            builder.UseWebAnalytics();
             builder.UsePageRouting(new PageRoutingOptions
             {
                 EnableAlternativeUrls = true

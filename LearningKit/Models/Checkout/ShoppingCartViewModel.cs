@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+
 using CMS.Ecommerce;
+
+using Kentico.Content.Web.Mvc;
 
 namespace LearningKit.Models.Checkout
 {
@@ -40,7 +41,10 @@ namespace LearningKit.Models.Checkout
                     SKUName = cartItemInfo.SKU.SKUName,
                     TotalPrice = cartItemInfo.TotalPrice,
                     CartItemID = cartItemInfo.CartItemID,
-                    SKUID = cartItemInfo.SKUID
+                    SKUID = cartItemInfo.SKUID,
+                    SKUImageUrl = string.IsNullOrEmpty(cartItemInfo.SKU.SKUImagePath) ? null : new FileUrl(cartItemInfo.SKU.SKUImagePath, true)
+                                                                                                .WithSizeConstraint(SizeConstraint.MaxWidthOrHeight(100))
+                                                                                                .RelativePath
                 };
             });
             CurrencyFormatString = cart.Currency.CurrencyFormatString;

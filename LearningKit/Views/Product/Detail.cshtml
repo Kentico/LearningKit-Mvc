@@ -10,7 +10,7 @@
 @* Renders product details. *@
 @if (!string.IsNullOrEmpty(Model.ImagePath))
 {
-    <img src="@Url.Kentico().ImageUrl(Model.ImagePath, SizeConstraint.MaxWidthOrHeight(500))" alt="@Model.Name">
+    <img src="@Model.ImagePath" alt="@Model.Name">
 }
 <ul>
     <li>

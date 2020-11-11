@@ -11,7 +11,7 @@ namespace LearningKit.FormBuilder
     {
         public IEnumerable<FormComponentDefinition> Filter(IEnumerable<FormComponentDefinition> formComponents, FormComponentFilterContext context)
         {
-            // Filters out all Kentico form components from the form builder UI
+            // Filters out all Xperience form components from the form builder UI
             return formComponents.Where(component => !component.Identifier.StartsWith("Kentico"));
         }
     }
