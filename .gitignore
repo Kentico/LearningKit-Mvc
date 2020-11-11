@@ -8,6 +8,13 @@
 *.user
 *.userosscache
 *.sln.docstates
+/LearningKit/AppData/CIRepository
+/LearningKit/AppData/Global
+/LearningKit/bin
+/LearningKit/obj
+/LearningKit/AppSettings.config
+/LearningKit/ConnectionStrings.config
+/LearningKit/LearningKit.csproj.user
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
