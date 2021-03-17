@@ -24,6 +24,8 @@
         modalDialog.apply = parentModalDialog.apply.bind(null, window);
         modalDialog.cancel = parentModalDialog.cancel.bind(null, window);
         modalDialog.getData = parentModalDialog.getData;
+
+        modalDialog.contentSelector = parentModalDialog.contentSelector;
     }
 
     /**
