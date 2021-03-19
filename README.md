@@ -2,7 +2,7 @@
 
 # LearningKit
 
- LearningKit is a functional website for learning purposes. It demonstrates how to implement various Kentico Xperience features on MVC websites in the form of code snippets, which you can run if you connect the website to a Kentico Xperience database.
+ LearningKit is a functional website for learning purposes. It demonstrates how to implement various Kentico Xperience features on MVC websites in the form of code snippets, which you can run if you connect the website to a Kentico Xperience database. See [Kentico Xperience sample sites](https://devnet.kentico.com/articles/kentico-xperience-sample-sites-and-their-differences) for a detailed description of this and other Xperience sample sites.
 
 ## Instructions for running the LearningKit project
 
