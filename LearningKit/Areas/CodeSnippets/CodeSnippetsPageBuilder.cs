@@ -152,14 +152,16 @@ namespace LearningKit.Areas.CodeSnippets
         }
 
         public ActionResult Index()
-        {
-            // Retrieves the node alias path of the selected page from the 'PagePaths' property
-            string selectedPagePath = componentPropertiesRetriever.Retrieve<CustomWidgetProperties>().PagePaths.FirstOrDefault()?.NodeAliasPath;
-            // Retrieves the page that corresponds to the selected node alias path
-            TreeNode page = pagesRetriever.Retrieve<TreeNode>(query => query
-                                .Path(selectedPagePath)
-                                .TopN(1))
-                                .FirstOrDefault();
+        {           
+            // Retrieves the node alias paths of the selected pages from the 'PagePaths' property
+            string[] selectedPagePaths = componentPropertiesRetriever.Retrieve<CustomWidgetProperties>().PagePaths
+                                                                     .Select(i => i.NodeAliasPath)
+                                                                     .ToArray();
+
+            // Retrieves the pages that correspond to the selected alias paths
+            List<TreeNode> pages = pagesRetriever.Retrieve<TreeNode>(query => query
+                                                 .Path(selectedPagePaths))
+                                                 .ToList();
 
             // Custom logic...
 
@@ -182,13 +184,15 @@ namespace LearningKit.Areas.CodeSnippets
 
         public ActionResult Index()
         {
-            // Retrieves the node GUID of the selected page from the 'Pages' property
-            Guid? selectedPageGuid = componentPropertiesRetriever.Retrieve<CustomWidgetProperties>().Pages.FirstOrDefault()?.NodeGuid;
-            // Retrieves the page that corresponds to the selected GUID
-            TreeNode page = pagesRetriever.Retrieve<TreeNode>(query => query
-                                .WhereEquals("NodeGUID", selectedPageGuid)
-                                .TopN(1))
-                                .FirstOrDefault();
+            // Retrieves the node GUIDs of the selected pages from the 'Pages' property
+            List<Guid> selectedPageGuids = componentPropertiesRetriever.Retrieve<CustomWidgetProperties>().Pages
+                                                                       .Select(i => i.NodeGuid)
+                                                                       .ToList();
+
+            // Retrieves the pages that correspond to the selected GUIDs
+            List<TreeNode> pages = pagesRetriever.Retrieve<TreeNode>(query => query
+                                                 .WhereIn("NodeGUID", selectedPageGuids))
+                                                 .ToList();
 
             // Custom logic...
 
@@ -256,6 +260,8 @@ namespace LearningKit.Areas.CodeSnippets
         [EditingComponent(PageSelector.IDENTIFIER)]
         // Limits the selection of pages to a subtree rooted at the 'Products' page
         [EditingComponentProperty(nameof(PageSelectorProperties.RootPath), "/Products")]
+        // Sets an unlimited number of selectable pages
+        [EditingComponentProperty(nameof(PageSelectorProperties.MaxPagesLimit), 0)]
         // Returns a list of page selector items (node GUIDs)
         public IEnumerable<PageSelectorItem> Pages { get; set; } = Enumerable.Empty<PageSelectorItem>();
         //EndDocSection:PageSelectorConfig
@@ -265,6 +271,8 @@ namespace LearningKit.Areas.CodeSnippets
         [EditingComponent(PathSelector.IDENTIFIER)]
         // Limits the selection of pages to a subtree rooted at the 'Products' page
         [EditingComponentProperty(nameof(PathSelectorProperties.RootPath), "/Products")]
+        // Sets the maximum number of selected pages to 6
+        [EditingComponentProperty(nameof(PathSelectorProperties.MaxPagesLimit), 6)]
         // Returns a list of path selector items (page paths)
         public IEnumerable<PathSelectorItem> PagePaths { get; set; } = Enumerable.Empty<PathSelectorItem>();
         //EndDocSection:PathSelectorConfig
