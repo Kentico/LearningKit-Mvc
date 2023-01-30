@@ -1,7 +1,6 @@
 ﻿using Kentico.Web.Mvc;
 using Kentico.Activities.Web.Mvc;
 using Kentico.CampaignLogging.Web.Mvc;
-using Kentico.Content.Web.Mvc;
 using Kentico.Newsletters.Web.Mvc;
 using Kentico.PageBuilder.Web.Mvc;
 using Kentico.OnlineMarketing.Web.Mvc;

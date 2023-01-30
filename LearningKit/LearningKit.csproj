@@ -52,6 +52,9 @@
     <Reference Include="AngleSharp, Version=0.14.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
       <HintPath>..\packages\AngleSharp.0.14.0\lib\net472\AngleSharp.dll</HintPath>
     </Reference>
+    <Reference Include="AngleSharp.Css, Version=0.14.2.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\AngleSharp.Css.0.14.2\lib\net472\AngleSharp.Css.dll</HintPath>
+    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -67,164 +70,173 @@
     <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
       <HintPath>..\packages\AWSSDK.S3.3.3.104.43\lib\net45\AWSSDK.S3.dll</HintPath>
     </Reference>
+    <Reference Include="Azure.Core, Version=1.25.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.25.0\lib\net461\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CMS.Activities, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Activities.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Activities.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Activities.Loggers, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Activities.Loggers.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Activities.Loggers.dll</HintPath>
     </Reference>
     <Reference Include="CMS.AmazonStorage, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.AmazonStorage.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.AmazonStorage.dll</HintPath>
     </Reference>
     <Reference Include="CMS.AspNet.Platform, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.AspNet.Platform.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.AspNet.Platform.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Automation, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Automation.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Automation.dll</HintPath>
     </Reference>
     <Reference Include="CMS.AzureStorage, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.AzureStorage.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.AzureStorage.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Base, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Base.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.ComputerVision.Azure, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.ComputerVision.Azure.dll</HintPath>
     </Reference>
     <Reference Include="CMS.ContactManagement, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.ContactManagement.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.ContactManagement.dll</HintPath>
     </Reference>
     <Reference Include="CMS.ContinuousIntegration, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.ContinuousIntegration.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.ContinuousIntegration.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Core, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Core.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Core.dll</HintPath>
     </Reference>
     <Reference Include="CMS.CustomTables, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.CustomTables.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.CustomTables.dll</HintPath>
     </Reference>
     <Reference Include="CMS.DataEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.DataEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.DataEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.DataProtection, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.DataProtection.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.DataProtection.dll</HintPath>
     </Reference>
     <Reference Include="CMS.DocumentEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.DocumentEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.DocumentEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Ecommerce, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Ecommerce.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Ecommerce.dll</HintPath>
     </Reference>
     <Reference Include="CMS.EmailEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.EmailEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.EmailEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.EventLog, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.EventLog.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.EventLog.dll</HintPath>
     </Reference>
     <Reference Include="CMS.FormEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.FormEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.FormEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Globalization, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Globalization.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Globalization.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Helpers, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Helpers.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="CMS.ImportExport, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.ImportExport.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.ImportExport.dll</HintPath>
     </Reference>
     <Reference Include="CMS.IO, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.IO.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.IO.dll</HintPath>
     </Reference>
     <Reference Include="CMS.LicenseProvider, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.LicenseProvider.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.LicenseProvider.dll</HintPath>
     </Reference>
     <Reference Include="CMS.MacroEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.MacroEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.MacroEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.MediaLibrary, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.MediaLibrary.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.MediaLibrary.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Membership, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Membership.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Membership.dll</HintPath>
     </Reference>
     <Reference Include="CMS.MembershipProvider, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.MembershipProvider.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.MembershipProvider.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Modules, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Modules.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Modules.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Newsletters, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Newsletters.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Newsletters.dll</HintPath>
     </Reference>
     <Reference Include="CMS.OnlineForms, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.OnlineForms.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.OnlineForms.dll</HintPath>
     </Reference>
     <Reference Include="CMS.OnlineMarketing, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.OnlineMarketing.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.OnlineMarketing.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Personas, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Personas.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Personas.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Relationships, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Relationships.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Relationships.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Reporting, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Reporting.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Reporting.dll</HintPath>
     </Reference>
     <Reference Include="CMS.ResponsiveImages, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.ResponsiveImages.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.ResponsiveImages.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Routing.Web, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Routing.Web.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Routing.Web.dll</HintPath>
     </Reference>
     <Reference Include="CMS.SalesForce, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.SalesForce.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.SalesForce.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Scheduler, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Scheduler.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Scheduler.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Search, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Search.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Search.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Search.Azure, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Search.Azure.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Search.Azure.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Search.Lucene3, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Search.Lucene3.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Search.Lucene3.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Search.TextExtractors, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Search.TextExtractors.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Search.TextExtractors.dll</HintPath>
     </Reference>
     <Reference Include="CMS.SharePoint, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.SharePoint.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.SharePoint.dll</HintPath>
     </Reference>
     <Reference Include="CMS.SiteProvider, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.SiteProvider.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.SiteProvider.dll</HintPath>
     </Reference>
     <Reference Include="CMS.SocialMarketing, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.SocialMarketing.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.SocialMarketing.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Synchronization, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Synchronization.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Synchronization.dll</HintPath>
     </Reference>
     <Reference Include="CMS.SynchronizationEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.SynchronizationEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.SynchronizationEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.Taxonomy, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.Taxonomy.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.Taxonomy.dll</HintPath>
     </Reference>
     <Reference Include="CMS.TextAnalytics.Azure, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.TextAnalytics.Azure.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.TextAnalytics.Azure.dll</HintPath>
     </Reference>
     <Reference Include="CMS.TranslationServices, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.TranslationServices.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.TranslationServices.dll</HintPath>
     </Reference>
     <Reference Include="CMS.WebAnalytics, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.WebAnalytics.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.WebAnalytics.dll</HintPath>
     </Reference>
     <Reference Include="CMS.WebFarmSync, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.WebFarmSync.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.WebFarmSync.dll</HintPath>
     </Reference>
     <Reference Include="CMS.WorkflowEngine, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\CMS.WorkflowEngine.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\CMS.WorkflowEngine.dll</HintPath>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
@@ -232,32 +244,38 @@
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlSanitizer, Version=5.0.0.0, Culture=neutral, PublicKeyToken=61c49a1a9e79cc28, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlSanitizer.5.0.376\lib\net46\HtmlSanitizer.dll</HintPath>
+    </Reference>
     <Reference Include="Kentico.Content.Web.Mvc, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.43\lib\NET48\Kentico.Content.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.99\lib\net48\Kentico.Content.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Kentico.Content.Web.Mvc.Views, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.43\lib\NET48\Kentico.Content.Web.Mvc.Views.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.99\lib\net48\Kentico.Content.Web.Mvc.Views.dll</HintPath>
     </Reference>
     <Reference Include="Kentico.Membership, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.43\lib\NET48\Kentico.Membership.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.99\lib\net48\Kentico.Membership.dll</HintPath>
     </Reference>
     <Reference Include="Kentico.OnlineMarketing.Web.Mvc, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.43\lib\NET48\Kentico.OnlineMarketing.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.99\lib\net48\Kentico.OnlineMarketing.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Kentico.Web.Mvc, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.43\lib\NET48\Kentico.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.99\lib\net48\Kentico.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Kentico.Web.Mvc.Proxies, Version=13.0.13.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.43\lib\NET48\Kentico.Web.Mvc.Proxies.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.AspNet.Mvc5.Libraries.13.0.99\lib\net48\Kentico.Web.Mvc.Proxies.dll</HintPath>
     </Reference>
     <Reference Include="LinqToTwitter.net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=957107be965c25d9, processorArchitecture=MSIL">
       <HintPath>..\packages\linqtotwitter.4.0.0\lib\net45\LinqToTwitter.net.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net.v3, Version=3.0.3.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\Lucene.Net.v3.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\Lucene.Net.v3.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net.WordNet.SynExpand, Version=2.0.0.1, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\Lucene.Net.WordNet.SynExpand.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\Lucene.Net.WordNet.SynExpand.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.3.3.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
     <Reference Include="MaxMind.Db, Version=2.0.0.0, Culture=neutral, PublicKeyToken=66afa4cc5ae853ac, processorArchitecture=MSIL">
       <HintPath>..\packages\MaxMind.Db.2.6.1\lib\net45\MaxMind.Db.dll</HintPath>
@@ -276,6 +294,9 @@
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=3.1.8.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.3.1.8\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.7.0.0\lib\net461\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -410,17 +431,17 @@
     <Reference Include="Microsoft.Online.SharePoint.Client.Tenant, Version=16.1.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SharePointOnline.CSOM.16.1.6621.1200\lib\net45\Microsoft.Online.SharePoint.Client.Tenant.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.1.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.4.1.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
@@ -494,6 +515,9 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="MimeKit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.3.3.0\lib\net48\MimeKit.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Cecil, Version=0.10.0.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.10.0\lib\net40\Mono.Cecil.dll</HintPath>
     </Reference>
@@ -506,8 +530,8 @@
     <Reference Include="Mono.Cecil.Rocks, Version=0.10.0.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.10.0\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NuGet.Common, Version=5.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Common.5.3.1\lib\net472\NuGet.Common.dll</HintPath>
@@ -534,7 +558,7 @@
       <HintPath>..\packages\PayPal.1.8.0\lib\net451\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="PDFClown, Version=0.1.2.1, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
-      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.43\lib\NET48\PDFClown.dll</HintPath>
+      <HintPath>..\packages\Kentico.Xperience.Libraries.13.0.99\lib\net48\PDFClown.dll</HintPath>
     </Reference>
     <Reference Include="PreMailer.Net, Version=2.2.0.0, Culture=neutral, PublicKeyToken=23e3f43e29cae17f, processorArchitecture=MSIL">
       <HintPath>..\packages\PreMailer.Net.2.2.0\lib\net461\PreMailer.Net.dll</HintPath>
@@ -545,6 +569,7 @@
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.HashFunction.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.HashFunction.Core.2.0.0\lib\net45\System.Data.HashFunction.Core.dll</HintPath>
@@ -555,9 +580,17 @@
     <Reference Include="System.Data.HashFunction.Interfaces, Version=2.0.0.0, Culture=neutral, PublicKeyToken=80c9288e394c1322, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.HashFunction.Interfaces.2.0.0\lib\net45\System.Data.HashFunction.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.7.1\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -571,8 +604,15 @@
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -593,13 +633,42 @@
     <Reference Include="System.Reactive.PlatformServices, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Duplex, Version=4.6.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ServiceModel.Duplex.4.6.0\lib\net461\System.ServiceModel.Duplex.dll</HintPath>
@@ -620,13 +689,22 @@
       <HintPath>..\packages\System.ServiceModel.Syndication.4.5.0\lib\net461\System.ServiceModel.Syndication.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.1\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.4.7.1\lib\net461\System.Threading.Channels.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -1079,7 +1157,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.43\build\Kentico.Xperience.AspNet.Mvc5.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.43\build\Kentico.Xperience.AspNet.Mvc5.targets'))" />
+    <Error Condition="!Exists('..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.99\build\Kentico.Xperience.AspNet.Mvc5.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.99\build\Kentico.Xperience.AspNet.Mvc5.targets'))" />
   </Target>
-  <Import Project="..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.43\build\Kentico.Xperience.AspNet.Mvc5.targets" Condition="Exists('..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.43\build\Kentico.Xperience.AspNet.Mvc5.targets')" />
+  <Import Project="..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.99\build\Kentico.Xperience.AspNet.Mvc5.targets" Condition="Exists('..\packages\Kentico.Xperience.AspNet.Mvc5.13.0.99\build\Kentico.Xperience.AspNet.Mvc5.targets')" />
 </Project>
